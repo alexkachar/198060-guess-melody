@@ -1,7 +1,7 @@
 # Личный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Александр Качар](https://up.htmlacademy.ru/ecmascript/6/user/198060).
-* Наставник: `Неизвестно`.
+* Наставник: [Данил Панкрашин](https://htmlacademy.ru/profile/danpan).
 
 ---
 
