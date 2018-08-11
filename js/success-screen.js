@@ -1,4 +1,4 @@
-import {getElementFromTemplate, renderScreen} from './utils';
+import {getElementFromTemplate} from './utils';
 // import {successScreenElement} from './success-screen';
 
 const templateSuccess =

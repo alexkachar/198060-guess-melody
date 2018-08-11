@@ -63,9 +63,9 @@ const templateArtist =
 
 const artistScreenElement = getElementFromTemplate(templateArtist);
 
-const artistButtons = artistScreenElement.querySelectorAll(`.main-answer`);
+const artistButtons = artistScreenElement.querySelectorAll(`.artist__name`);
 
-Array.from(artistButtons).forEach((element) => {
+artistButtons.forEach((element) => {
   element.addEventListener(`click`, () => renderScreen(successScreenElement));
 });
 
