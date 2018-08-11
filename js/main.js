@@ -1,4 +1,4 @@
-import {welcomeScreenElement} from './welcome';
+import {welcomeScreenElement} from './welcome-screen';
 import {renderScreen} from './utils';
 
 renderScreen(welcomeScreenElement);

@@ -1,3 +1,6 @@
+import {getElementFromTemplate, renderScreen} from './utils';
+import {successScreenElement} from './success-screen';
+
 const templateArtist =
 `<section class="game game--artist">
   <header class="game__header">
@@ -57,3 +60,13 @@ const templateArtist =
     </form>
   </section>
 </section>`;
+
+const artistScreenElement = getElementFromTemplate(templateArtist);
+
+const artistButtons = artistScreenElement.querySelectorAll(`.main-answer`);
+
+Array.from(artistButtons).forEach((element) => {
+  element.addEventListener(`click`, () => renderScreen(successScreenElement));
+});
+
+export {artistScreenElement};

@@ -1,3 +1,6 @@
+import {getElementFromTemplate, renderScreen} from './utils';
+// import {successScreenElement} from './success-screen';
+
 const templateSuccess =
 `<section class="result">
   <div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
@@ -6,3 +9,7 @@ const templateSuccess =
   <p class="result__text">Вы заняли 2 место из 10. Это лучше чем у 80% игроков</p>
   <button class="result__replay" type="button">Сыграть ещё раз</button>
 </section>`;
+
+const successScreenElement = getElementFromTemplate(templateSuccess);
+
+export {successScreenElement};

@@ -1,5 +1,7 @@
-const templateGenre =
-`<section class="game game--genre">
+import {getElementFromTemplate, renderScreen} from './utils';
+import {artistScreenElement} from './artist-screen';
+
+const templateGenre = `<section class="game game--genre">
   <header class="game__header">
     <a class="game__back" href="#">
       <span class="visually-hidden">Сыграть ещё раз</span>
@@ -75,3 +77,13 @@ const templateGenre =
     </form>
   </section>
 </section>`;
+
+const genreScreenElement = getElementFromTemplate(templateGenre);
+
+const submitButton = genreScreenElement.querySelector(`.game__submit`);
+
+submitButton.addEventListener(`click`, () => {
+  renderScreen(artistScreenElement);
+});
+
+export {genreScreenElement};
