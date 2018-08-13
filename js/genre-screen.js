@@ -1,4 +1,5 @@
 import {getElementFromTemplate, renderScreen} from './utils';
+import {welcomeScreenElement} from './welcome-screen';
 import {artistScreenElement} from './artist-screen';
 
 const templateGenre = `<section class="game game--genre">
@@ -81,6 +82,7 @@ const templateGenre = `<section class="game game--genre">
 const genreScreenElement = getElementFromTemplate(templateGenre);
 const genreform = genreScreenElement.querySelector(`.game__tracks`);
 const submitButton = genreScreenElement.querySelector(`.game__submit`);
+const gameBackButton = genreScreenElement.querySelector(`.game__back`);
 //
 submitButton.disabled = true;
 
@@ -96,6 +98,10 @@ submitButton.addEventListener(`click`, (event) => {
   genreform.reset();
   submitButton.disabled = true;
   renderScreen(artistScreenElement);
+});
+
+gameBackButton.addEventListener(`click`, () => {
+  renderScreen(welcomeScreenElement);
 });
 
 export {genreScreenElement};
