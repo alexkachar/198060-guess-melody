@@ -79,10 +79,22 @@ const templateGenre = `<section class="game game--genre">
 </section>`;
 
 const genreScreenElement = getElementFromTemplate(templateGenre);
-
+const genreform = genreScreenElement.querySelector(`.game__tracks`);
 const submitButton = genreScreenElement.querySelector(`.game__submit`);
+//
+submitButton.disabled = true;
 
-submitButton.addEventListener(`click`, () => {
+genreform.addEventListener(`click`, (event) => {
+  if (event.target.name === `answer`) {
+    const isAnswerChecked = genreform.querySelectorAll(`[name="answer"]:checked`);
+    submitButton.disabled = !isAnswerChecked.length;
+  }
+});
+
+submitButton.addEventListener(`click`, (event) => {
+  event.preventDefault();
+  genreform.reset();
+  submitButton.disabled = true;
   renderScreen(artistScreenElement);
 });
 
