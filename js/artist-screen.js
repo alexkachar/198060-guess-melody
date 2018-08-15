@@ -1,5 +1,4 @@
 import {getElementFromTemplate, renderScreen, getRandomValueFromArray} from './utils';
-import {welcomeScreenElement} from './welcome-screen';
 import {successScreenElement} from './success-screen';
 import {failTimeElement} from './fail-time-screen';
 import {failTriesElement} from './fail-tries-screen';
@@ -71,7 +70,7 @@ const getRandomScreen = () => {
 };
 
 const artistScreenElement = getElementFromTemplate(templateArtist);
-const gameBackButton = artistScreenElement.querySelector(`.game__back`);
+const backButton = artistScreenElement.querySelector(`.game__back`);
 
 const artistButtons = artistScreenElement.querySelectorAll(`.artist__name`);
 
@@ -79,8 +78,4 @@ artistButtons.forEach((element) => {
   element.addEventListener(`click`, () => getRandomScreen());
 });
 
-gameBackButton.addEventListener(`click`, () => {
-  renderScreen(welcomeScreenElement);
-});
-
-export {artistScreenElement};
+export {artistScreenElement, backButton};

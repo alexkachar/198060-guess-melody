@@ -1,5 +1,4 @@
-import {getElementFromTemplate, renderScreen} from './utils';
-import {genreScreenElement} from './genre-screen';
+import {getElementFromTemplate} from './utils';
 
 const templateWelcome =
 `<section class="welcome">
@@ -18,8 +17,4 @@ const welcomeScreenElement = getElementFromTemplate(templateWelcome);
 
 const welcomeButton = welcomeScreenElement.querySelector(`.welcome__button`);
 
-welcomeButton.addEventListener(`click`, () => {
-  renderScreen(genreScreenElement);
-});
-
-export {welcomeScreenElement};
+export {welcomeScreenElement, welcomeButton};
