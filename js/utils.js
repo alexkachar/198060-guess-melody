@@ -1,3 +1,5 @@
+import {Routes} from './routes';
+
 const mainElement = document.querySelector(`.main`);
 
 const getElementFromTemplate = (template) => {
@@ -6,9 +8,9 @@ const getElementFromTemplate = (template) => {
   return wrapper.children[0];
 };
 
-const renderScreen = (gameScreen) => {
+const renderScreen = (path) => {
   mainElement.innerHTML = ``;
-  mainElement.appendChild(gameScreen);
+  mainElement.appendChild(Routes[path]);
 };
 
 const getRandomValue = (min, max) => {
