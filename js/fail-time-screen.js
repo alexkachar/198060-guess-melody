@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from './utils';
+import {getElementFromTemplate, renderScreen} from './utils';
+import {welcomeScreenElement} from './welcome-screen';
 
 const templateFailTime =
 `<section class="result">
@@ -9,6 +10,10 @@ const templateFailTime =
 </section>`;
 
 const failTimeElement = getElementFromTemplate(templateFailTime);
-const replayButton = failTimeElement.querySelector(`.result__replay`);
 
-export {failTimeElement, replayButton};
+const initFailTimeScreen = () => {
+  const replayButton = failTimeElement.querySelector(`.result__replay`);
+  replayButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
+};
+
+export {failTimeElement, initFailTimeScreen};

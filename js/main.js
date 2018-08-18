@@ -1,21 +1,15 @@
-import {Routes} from './routes';
-import {WELCOME, GENRE, ARTIST, SUCCESS, TIME, TRIES} from './constants';
-import {welcomeScreenElement, welcomeButton} from './welcome-screen';
 import {renderScreen} from './utils';
-import {genreScreenElement, backButton as genreBackButton} from './genre-screen';
-import {backButton as artistBackButton} from './artist-screen';
-import {replayButton as successReplayButton} from './success-screen';
-import {replayButton as timeReplayButton} from './fail-time-screen';
-import {replayButton as triesReplayButton} from './fail-tries-screen';
+import {welcomeScreenElement, initWelcomeScreen} from './welcome-screen';
+import {genreScreenElement, initGenreScreen} from './genre-screen';
+import {artistScreenElement, initArtistScreen} from './artist-screen';
+import {initSuccessScreen} from './success-screen';
+import {initFailTimeScreen} from './fail-time-screen';
+import {initFailTriesScreen} from './fail-tries-screen';
 
-// renderScreen(welcomeScreenElement);
-renderScreen(Routes[WELCOME]);
-
-genreBackButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
-artistBackButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
-
-successReplayButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
-timeReplayButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
-triesReplayButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
-
-welcomeButton.addEventListener(`click`, () => renderScreen(genreScreenElement));
+renderScreen(welcomeScreenElement);
+initWelcomeScreen(genreScreenElement);
+initGenreScreen(artistScreenElement);
+initArtistScreen();
+initSuccessScreen();
+initFailTimeScreen();
+initFailTriesScreen();

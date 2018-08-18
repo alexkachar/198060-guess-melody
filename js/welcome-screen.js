@@ -1,7 +1,6 @@
-import {getElementFromTemplate} from './utils';
+import {getElementFromTemplate, renderScreen} from './utils';
 
-const templateWelcome =
-`<section class="welcome">
+const templateWelcome = `<section class="welcome">
   <div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
   <button class="welcome__button"><span class="visually-hidden">Начать игру</span></button>
   <h2 class="welcome__rules-title">Правила игры</h2>
@@ -15,6 +14,9 @@ const templateWelcome =
 
 const welcomeScreenElement = getElementFromTemplate(templateWelcome);
 
-const welcomeButton = welcomeScreenElement.querySelector(`.welcome__button`);
+let initWelcomeScreen = (nextScreen) => {
+  const welcomeButton = welcomeScreenElement.querySelector(`.welcome__button`);
+  welcomeButton.addEventListener(`click`, () => renderScreen(nextScreen));
+};
 
-export {welcomeScreenElement, welcomeButton};
+export {welcomeScreenElement, initWelcomeScreen};
