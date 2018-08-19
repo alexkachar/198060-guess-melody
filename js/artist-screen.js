@@ -61,10 +61,11 @@ const template =
 </section>`;
 
 const screenElement = getElementFromTemplate(template);
+const artistButtons = screenElement.querySelectorAll(`.artist__name`);
 
 const initArtistScreen = (nextScreen) => {
   const backButton = screenElement.querySelector(`.game__back`);
   backButton.addEventListener(`click`, () => renderScreen(nextScreen));
 };
 
-export {screenElement, initArtistScreen};
+export {screenElement, artistButtons, initArtistScreen};
