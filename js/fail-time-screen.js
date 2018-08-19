@@ -8,11 +8,11 @@ const template =
   <button class="result__replay" type="button">Попробовать ещё раз</button>
 </section>`;
 
-const failTimeElement = getElementFromTemplate(template);
+const screenElement = getElementFromTemplate(template);
 
 const initFailTimeScreen = (nextScreen) => {
-  const replayButton = failTimeElement.querySelector(`.result__replay`);
+  const replayButton = screenElement.querySelector(`.result__replay`);
   replayButton.addEventListener(`click`, () => renderScreen(nextScreen));
 };
 
-export {failTimeElement, initFailTimeScreen};
+export {screenElement, initFailTimeScreen};

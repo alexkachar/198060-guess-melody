@@ -1,7 +1,7 @@
 import {getElementFromTemplate, renderScreen, getRandomValueFromArray} from './utils';
-import {successScreenElement} from './success-screen';
-import {failTimeElement} from './fail-time-screen';
-import {failTriesElement} from './fail-tries-screen';
+import {screenElement as successScreenElement} from './success-screen';
+import {screenElement as failTimeElement} from './fail-time-screen';
+import {screenElement as failTriesElement} from './fail-tries-screen';
 
 const template =
 `<section class="game game--artist">
@@ -63,11 +63,11 @@ const template =
   </section>
 </section>`;
 
-const artistScreenElement = getElementFromTemplate(template);
+const screenElement = getElementFromTemplate(template);
 
 const initArtistScreen = (nextScreen) => {
-  const artistBackButton = artistScreenElement.querySelector(`.game__back`);
-  artistBackButton.addEventListener(`click`, () => renderScreen(nextScreen));
+  const backButton = screenElement.querySelector(`.game__back`);
+  backButton.addEventListener(`click`, () => renderScreen(nextScreen));
 
   const resultsScreensArray = [successScreenElement, failTimeElement, failTriesElement];
 
@@ -75,11 +75,11 @@ const initArtistScreen = (nextScreen) => {
     return renderScreen(getRandomValueFromArray(resultsScreensArray));
   };
 
-  const artistButtons = artistScreenElement.querySelectorAll(`.artist__name`);
+  const artistButtons = screenElement.querySelectorAll(`.artist__name`);
 
   artistButtons.forEach((element) => {
     element.addEventListener(`click`, () => getRandomScreen());
   });
 };
 
-export {artistScreenElement, initArtistScreen};
+export {screenElement, initArtistScreen};

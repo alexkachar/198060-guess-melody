@@ -9,11 +9,11 @@ const template =
   <button class="result__replay" type="button">Сыграть ещё раз</button>
 </section>`;
 
-const successScreenElement = getElementFromTemplate(template);
+const screenElement = getElementFromTemplate(template);
 
 const initSuccessScreen = (nextScreen) => {
-  const replayButton = successScreenElement.querySelector(`.result__replay`);
+  const replayButton = screenElement.querySelector(`.result__replay`);
   replayButton.addEventListener(`click`, () => renderScreen(nextScreen));
 };
 
-export {successScreenElement, initSuccessScreen};
+export {screenElement, initSuccessScreen};

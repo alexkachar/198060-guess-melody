@@ -12,11 +12,11 @@ const template = `<section class="welcome">
   <p class="welcome__text">Удачи!</p>
 </section>`;
 
-const welcomeScreenElement = getElementFromTemplate(template);
+const screenElement = getElementFromTemplate(template);
 
 let initWelcomeScreen = (nextScreen) => {
-  const welcomeButton = welcomeScreenElement.querySelector(`.welcome__button`);
+  const welcomeButton = screenElement.querySelector(`.welcome__button`);
   welcomeButton.addEventListener(`click`, () => renderScreen(nextScreen));
 };
 
-export {welcomeScreenElement, initWelcomeScreen};
+export {screenElement, initWelcomeScreen};
