@@ -1,7 +1,7 @@
 import {getElementFromTemplate, renderScreen} from './utils';
 import {welcomeScreenElement} from './welcome-screen';
 
-const templateGenre = `<section class="game game--genre">
+const template = `<section class="game game--genre">
 <header class="game__header">
   <a class="game__back" href="#">
     <span class="visually-hidden">Сыграть ещё раз</span>
@@ -78,7 +78,7 @@ const templateGenre = `<section class="game game--genre">
 </section>
 </section>`;
 
-const genreScreenElement = getElementFromTemplate(templateGenre);
+const genreScreenElement = getElementFromTemplate(template);
 
 const initGenreScreen = (nextScreen) => {
   const genreBackButton = genreScreenElement.querySelector(`.game__back`);
