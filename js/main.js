@@ -1,17 +1,16 @@
 import {renderScreen, getRandomValueFromArray} from './utils';
-import {screenElement as welcomeScreenElement, initWelcomeScreen} from './welcome-screen';
-import {screenElement as genreScreenElement, initGenreScreen} from './genre-screen';
-import {screenElement as artistScreenElement, initArtistScreen} from './artist-screen';
-import {screenElement as successScreenElement, initSuccessScreen} from './success-screen';
-import {screenElement as failTimeElement, initFailTimeScreen} from './fail-time-screen';
-import {screenElement as failTriesElement, initFailTriesScreen} from './fail-tries-screen';
+import {screenElement as welcomeScreenElement, initWelcomeScreen} from './screens/welcome';
+import {screenElement as genreScreenElement, initGenreScreen} from './screens/genre';
+import {screenElement as artistScreenElement, initArtistScreen} from './screens/artist';
+import {screenElement as successScreenElement, initSuccessScreen} from './screens/success';
+import {screenElement as failTimeElement, initFailTimeScreen} from './screens/fail-time';
+import {screenElement as failTriesElement, initFailTriesScreen} from './screens/fail-tries';
 
 const resultsScreensArray = [successScreenElement, failTimeElement, failTriesElement];
 
 const getRandomScreen = () => {
   return renderScreen(getRandomValueFromArray(resultsScreensArray));
 };
-
 
 renderScreen(welcomeScreenElement);
 initWelcomeScreen(genreScreenElement);
