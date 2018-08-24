@@ -29,16 +29,16 @@ const rivalsMock = [
   {isWinner: true, notesLeft: 1, timeLeft: 50, points: 10}
 ];
 
-describe(`Функция вывода результата игрока`, () => {
-  it(`Если игрок выиграл, то его результат должен быть выведен в виде фразы: Вы заняли i место из t игроков. Это лучше, чем у n% игроков, где i — место, которое занял пользователь, t — общее кол-во игроков, n — процент успеха игрока`, () => {
+describe(`Player result output function`, () => {
+  it(`If the player wins, the returned message is correct`, () => {
     assert.equal(`Вы заняли 1 место из 5 игроков. Это лучше, чем у 80% игроков`, getStats(rivalsMock, statsMock1));
   });
 
-  it(`Если игрок проиграл и у него закончилось время, то должна быть выведена фраза: «Время вышло! Вы не успели отгадать все мелодии»`, () => {
+  it(`If the player loses and out of time, the returned message is correct`, () => {
     assert.equal(`Время вышло! Вы не успели отгадать все мелодии`, getStats(rivalsMock, statsMock2));
   });
 
-  it(`Если игрок проиграл и у него закончились попытки, то должна быть выведена фраза: «У вас закончились все попытки. Ничего, повезёт в следующий раз!»`, () => {
+  it(`If the player loses and out of tries, the returned message is correct`, () => {
     assert.equal(`У вас закончились все попытки. Ничего, повезёт в следующий раз!`, getStats(rivalsMock, statsMock3));
   });
 });
