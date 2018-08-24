@@ -31,14 +31,14 @@ const rivalsMock = [
 
 describe(`Player result output function`, () => {
   it(`If the player wins, the returned message is correct`, () => {
-    assert.equal(`Вы заняли 1 место из 5 игроков. Это лучше, чем у 80% игроков`, getStats(rivalsMock, statsMock1));
+    assert.equal(getStats(rivalsMock, statsMock1, `Вы заняли 1 место из 5 игроков. Это лучше, чем у 80% игроков`));
   });
 
   it(`If the player loses and out of time, the returned message is correct`, () => {
-    assert.equal(`Время вышло! Вы не успели отгадать все мелодии`, getStats(rivalsMock, statsMock2));
+    assert.equal(getStats(rivalsMock, statsMock2), `Время вышло! Вы не успели отгадать все мелодии`);
   });
 
   it(`If the player loses and out of tries, the returned message is correct`, () => {
-    assert.equal(`У вас закончились все попытки. Ничего, повезёт в следующий раз!`, getStats(rivalsMock, statsMock3));
+    assert.equal(getStats(rivalsMock, statsMock3), `У вас закончились все попытки. Ничего, повезёт в следующий раз!`);
   });
 });

@@ -42,14 +42,14 @@ let answersMock3 = [
 
 describe(`Players score calculating function`, () => {
   it(`If the player answers less than 10 questions, then the game is considered not passed and the function should return -1`, () => {
-    assert.equal(-1, checkAnswers(answersMock1, initNotes));
+    assert.equal(checkAnswers(answersMock1, initNotes), -1);
   });
 
   it(`If the player answered all the questions correctly and not quickly, and never made a mistake, then the function should return 10 points`, () => {
-    assert.equal(10, checkAnswers(answersMock2, initNotes));
+    assert.equal(checkAnswers(answersMock2, initNotes), 10);
   });
 
   it(`If the player answered all the questions correctly and quickly, and never made a mistake, then the function should return 20 points`, () => {
-    assert.equal(20, checkAnswers(answersMock3, initNotes));
+    assert.equal(checkAnswers(answersMock3, initNotes), 20);
   });
 });

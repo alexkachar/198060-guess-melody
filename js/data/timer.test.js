@@ -7,10 +7,10 @@ describe(`Game timer function`, () => {
   });
 
   it(`Times left`, () => {
-    assert.equal(149, setTimer(150).tick());
+    assert.equal(setTimer(150).tick(), 149);
   });
 
   it(`Time is out`, () => {
-    assert.equal(`Ваше время вышло`, setTimer(1).tick());
+    assert.equal(setTimer(1).tick(), `Ваше время вышло`);
   });
 });
