@@ -1,4 +1,4 @@
-const initPlayerNotes = 3;
+const initNotes = 3;
 const MAX_ANSWERS_NUMBER = 10;
 const FAST_ANSWER_TIME = 30;
 
@@ -28,4 +28,4 @@ const checkAnswers = (answers, notes) => {
   }
 };
 
-export {checkAnswers, initPlayerNotes};
+export {checkAnswers, initNotes};

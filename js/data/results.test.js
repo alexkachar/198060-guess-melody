@@ -1,21 +1,21 @@
 import {assert} from 'chai';
 import {getStats} from '../results.js';
 
-const playerStatsMock1 = {
+const statsMock1 = {
   isWinner: true,
   notesLeft: 3,
   timeLeft: 130,
   points: 20
 };
 
-const playerStatsMock2 = {
+const statsMock2 = {
   isWinner: false,
   notesLeft: 2,
   timeLeft: 0,
   points: 12
 };
 
-const playerStatsMock3 = {
+const statsMock3 = {
   isWinner: false,
   notesLeft: 0,
   timeLeft: 30,
@@ -31,14 +31,14 @@ const rivalsMock = [
 
 describe(`Функция вывода результата игрока`, () => {
   it(`Если игрок выиграл, то его результат должен быть выведен в виде фразы: Вы заняли i место из t игроков. Это лучше, чем у n% игроков, где i — место, которое занял пользователь, t — общее кол-во игроков, n — процент успеха игрока`, () => {
-    assert.equal(`Вы заняли 1 место из 5 игроков. Это лучше, чем у 80% игроков`, getStats(rivalsMock, playerStatsMock1));
+    assert.equal(`Вы заняли 1 место из 5 игроков. Это лучше, чем у 80% игроков`, getStats(rivalsMock, statsMock1));
   });
 
   it(`Если игрок проиграл и у него закончилось время, то должна быть выведена фраза: «Время вышло! Вы не успели отгадать все мелодии»`, () => {
-    assert.equal(`Время вышло! Вы не успели отгадать все мелодии`, getStats(rivalsMock, playerStatsMock2));
+    assert.equal(`Время вышло! Вы не успели отгадать все мелодии`, getStats(rivalsMock, statsMock2));
   });
 
   it(`Если игрок проиграл и у него закончились попытки, то должна быть выведена фраза: «У вас закончились все попытки. Ничего, повезёт в следующий раз!»`, () => {
-    assert.equal(`У вас закончились все попытки. Ничего, повезёт в следующий раз!`, getStats(rivalsMock, playerStatsMock3));
+    assert.equal(`У вас закончились все попытки. Ничего, повезёт в следующий раз!`, getStats(rivalsMock, statsMock3));
   });
 });
