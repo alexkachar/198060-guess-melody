@@ -1,4 +1,4 @@
-import {getElementFromTemplate, renderScreen} from './utils';
+import {getElementFromTemplate, renderScreen} from '../utils';
 
 const template = `<section class="game game--genre">
 <header class="game__header">
