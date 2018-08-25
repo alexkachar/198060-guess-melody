@@ -31,7 +31,7 @@ const rivalsMock = [
 
 describe(`Player result output function`, () => {
   it(`If the player wins, the returned message is correct`, () => {
-    assert.equal(getStats(rivalsMock, statsMock1, `Вы заняли 1 место из 5 игроков. Это лучше, чем у 80% игроков`));
+    assert.equal(getStats(rivalsMock, statsMock1), `Вы заняли 1 место из 5 игроков. Это лучше, чем у 80% игроков`);
   });
 
   it(`If the player loses and out of time, the returned message is correct`, () => {
