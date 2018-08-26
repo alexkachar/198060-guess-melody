@@ -1,5 +1,6 @@
 export default `
   <form class="game__tracks">
+
     <div class="track">
       <button class="track__button track__button--play" type="button"></button>
       <div class="track__status">

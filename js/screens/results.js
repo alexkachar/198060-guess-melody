@@ -9,8 +9,8 @@ const TITLES = {
 const RESULTS = {
   failTime: `<p class="result__total result__total--fail">Время вышло! Вы не успели отгадать все мелодии</p>`,
   failTries: `<p class="result__total result__total--fail">У вас закончились все попытки. Ничего, повезёт в следующий раз!</p>`,
-  win: `<p class="result__total">За 3 минуты и 25 секунд вы набрали 12 баллов (8 быстрых), совершив 3 ошибки</p>
-    <p class="result__text">Вы заняли 2 место из 10. Это лучше чем у 80% игроков</p>`
+  win: [`<p class="result__total">За 3 минуты и 25 секунд вы набрали 12 баллов (8 быстрых), совершив 3 ошибки</p>
+    `, `<p class="result__text">Вы заняли 2 место из 10. Это лучше чем у 80% игроков</p>`]
 };
 
 const BUTTONS = {
