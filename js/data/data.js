@@ -1,16 +1,16 @@
-const gameState = {
+export const gameState = Object.freeze({
   level: 0,
   notes: 3,
   time: 300,
   points: 0
-};
+});
 
-const game = {
+export const game = {
   title: `Угадай мелодию`,
   rules: [`За 5 минут нужно ответить на все вопросы.`, `Можно допустить 3 ошибки.`]
 };
 
-const levels = {
+export const levels = {
   '1': {
     type: `artist`,
     audio: `https://www.youtube.com/audiolibrary_download?vid=91624fdc22fc54ed`,
@@ -267,5 +267,3 @@ const levels = {
     ]
   }
 };
-
-export {gameState, game, levels};

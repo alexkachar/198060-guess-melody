@@ -1,31 +1,20 @@
-export default `
-  <div class="game__track">
-    <button class="track__button track__button--play" type="button"></button>
-    <audio></audio>
-  </div>
-
-  <form class="game__artist">
-    <div class="artist">
-      <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-1" id="answer-1">
-      <label class="artist__name" for="answer-1">
-        <img class="artist__picture" src="http://placehold.it/134x134" alt="Пелагея">
-        Пелагея
-      </label>
+export const getArtistTemplate = (levels, index) => {
+  return `<div class="game__track">
+      <button class="track__button track__button--play" type="button"></button>
+      <audio src ="${levels.audio}"></audio>
     </div>
 
-    <div class="artist">
-      <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-2" id="answer-2">
-      <label class="artist__name" for="answer-2">
-        <img class="artist__picture" src="http://placehold.it/134x134" alt="Пелагея">
-        Краснознаменная дивизия имени моей бабушки
-      </label>
-    </div>
+    <form class="game__artist">
+      ${makeAnswers(levels, index)};
+    </form>`;
+};
 
-    <div class="artist">
-      <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-3" id="answer-3">
-      <label class="artist__name" for="answer-3">
-        <img class="artist__picture" src="http://placehold.it/134x134" alt="Пелагея">
-        Lorde
+const makeAnswers = (levels, index) => {
+  return `<div class="artist">
+      <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-${index}" id="answer-${index}">
+      <label class="artist__name" for="answer-${index}">
+        <img class="artist__picture" src="${levels.answers.img}" alt="${levels.answers.artist}">
+        ${levels.answers.artist}
       </label>
-    </div>
-  </form>`;
+    </div>`;
+};
