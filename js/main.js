@@ -16,3 +16,4 @@ initArtistScreen(welcomeScreenElement, getRandomScreen);
 initSuccessScreen(welcomeScreenElement);
 initFailTimeScreen(welcomeScreenElement);
 initFailTriesScreen(welcomeScreenElement);
+

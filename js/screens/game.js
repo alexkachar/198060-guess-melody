@@ -21,11 +21,10 @@ const getGameTemplate = (gameType, gameHeader, gameTitle, gameScreen) => {
 };
 
 const artistScreenTemplate = getGameTemplate(`artist`, headerTemplate, TITLES.artist, getArtistTemplate(levels, 1, 4));
-const genreScreenTemplate = getGameTemplate(`genre`, headerTemplate, TITLES.genre, getGenreTemplate(levels, 1, 4));
+const genreScreenTemplate = getGameTemplate(`genre`, headerTemplate, TITLES.genre, getGenreTemplate(levels, 6, 4));
 
 const artistScreenElement = getElementFromTemplate(artistScreenTemplate);
 const genreScreenElement = getElementFromTemplate(genreScreenTemplate);
-
 
 const initArtistScreen = (prevScreen, nextScreen) => {
   const backButton = artistScreenElement.querySelector(`.game__back`);

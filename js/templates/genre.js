@@ -1,17 +1,19 @@
-export const getGenreTemplate = (levels, level, index) => {
+import {levels} from '../data/data';
+
+export const getGenreTemplate = (levelsData, level, index) => {
   return `<form class="game__tracks">
     ${makeAnswers(levels, level, index)};
     <button class="game__submit button" type="submit">Ответить</button>
   </form>`;
 };
 
-const makeAnswers = (levels, level, index) => {
+const makeAnswers = (levelsData, level, index) => {
   let answers = [];
   for (let i = 0; i < index; i++) {
     answers.push(`<div class="track">
       <button class="track__button track__button--play" type="button"></button>
         <div class="track__status">
-        <audio src ="${levels.level.audio}"></audio>
+        <audio src ="${levelsData[level].audio}"></audio>
       </div>
 
     <div class="game__answer">
