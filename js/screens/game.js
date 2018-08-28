@@ -1,7 +1,8 @@
 import {getElementFromTemplate, renderScreen} from '../utils';
 import headerTemplate from '../templates/header';
-import genreTemplate from '../templates/genre';
-import artistTemplate from '../templates/artist';
+import getGenreTemplate from '../templates/genre';
+import getArtistTemplate from '../templates/artist';
+import levels from '../data/data';
 
 const TITLES = {
   artist: `Кто исполняет эту песню?`,
@@ -19,8 +20,8 @@ const getGameTemplate = (gameType, gameHeader, gameTitle, gameScreen) => {
   </section>`;
 };
 
-const artistScreenTemplate = getGameTemplate(`artist`, headerTemplate, TITLES.artist, artistTemplate);
-const genreScreenTemplate = getGameTemplate(`genre`, headerTemplate, TITLES.genre, genreTemplate);
+const artistScreenTemplate = getGameTemplate(`artist`, headerTemplate, TITLES.artist, getArtistTemplate(levels, 1, 4));
+const genreScreenTemplate = getGameTemplate(`genre`, headerTemplate, TITLES.genre, getGenreTemplate(levels, 1, 4));
 
 const artistScreenElement = getElementFromTemplate(artistScreenTemplate);
 const genreScreenElement = getElementFromTemplate(genreScreenTemplate);
