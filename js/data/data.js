@@ -12,8 +12,8 @@ export const game = {
 
 export const levels = {
   '1': {
-    type: `artist`,
     audio: `https://www.youtube.com/audiolibrary_download?vid=91624fdc22fc54ed`,
+    type: `artist`,
     answers: [
       {
         img: `https://yt3.ggpht.com/-fkDeGauT7Co/AAAAAAAAAAI/AAAAAAAAAAA/dkF5ZKkrxRo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg`,
@@ -263,6 +263,37 @@ export const levels = {
         genre: `Electronic`,
         correct: true,
         autoplay: false
+      }
+    ]
+  }
+};
+
+const QUEST = {
+  'level-0': {
+    text: `Вас зовут Луиджи Марио, вы водопроводчик, но сейчас перед вами стоит очень важная миссия — спасти принцессу
+    Грибного Королевства Тоадстул Пич. Её похитил злой повелитель черепах Боузер и вы отправились в Грибное Королевство,
+    чтобы победить Боузера и освободить принцессу. Вы отправляетесь в первый замок, но, чтобы в него попасть нужно
+    преодолеть несколько препятствий. Вы стоите посреди на одной из равнин Грибного Королевства и видите как на вас
+    стремительно несется хмурый гриб вашего роста. Нужно срочно что-то предпринять`,
+    answers: [
+      {
+        action: `left`,
+        title: `Вы побежите влево, от гриба`,
+        go() {
+        }
+      },
+      {
+        action: `right`,
+        title: `Вы побежите вправо, прямо на гриб`,
+        go() {
+        }
+      },
+      {
+        action: `jump`,
+        title: `Вы прыгнете вверх`,
+        go() {
+          return 1;
+        }
       }
     ]
   }
