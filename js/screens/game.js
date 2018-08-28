@@ -1,8 +1,8 @@
 import {getElementFromTemplate, renderScreen} from '../utils';
-import headerTemplate from '../templates/header';
-import getGenreTemplate from '../templates/genre';
-import getArtistTemplate from '../templates/artist';
-import levels from '../data/data';
+import {headerTemplate} from '../templates/header';
+import {getGenreTemplate} from '../templates/genre';
+import {getArtistTemplate} from '../templates/artist';
+import {levels} from '../data/data';
 
 const TITLES = {
   artist: `Кто исполняет эту песню?`,
