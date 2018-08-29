@@ -20,7 +20,8 @@ const getGameTemplate = (gameType, gameHeader, gameTitle, gameScreen) => {
   </section>`;
 };
 
-const artistScreenTemplate = getGameTemplate(`artist`, headerTemplate, TITLES.artist, getArtistTemplate(levels, 1, 4));
+console.log(levels, 'levels');
+const artistScreenTemplate = getGameTemplate(`artist`, headerTemplate, TITLES.artist, getArtistTemplate(levels[`1`], 1));
 const genreScreenTemplate = getGameTemplate(`genre`, headerTemplate, TITLES.genre, getGenreTemplate(levels, 6, 4));
 
 const artistScreenElement = getElementFromTemplate(artistScreenTemplate);
