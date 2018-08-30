@@ -16,16 +16,19 @@ const levels = {
     type: `artist`,
     answers: [
       {
+        value: `1`,
         img: `https://yt3.ggpht.com/-fkDeGauT7Co/AAAAAAAAAAI/AAAAAAAAAAA/dkF5ZKkrxRo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg`,
         artist: `Kevin MacLeod`,
         correct: true
       },
       {
+        value: `2`,
         img: `http://4.bp.blogspot.com/-kft9qu5ET6U/VPFUBi9W-MI/AAAAAAAACYM/UxXilXKYwOc/s1600/audionautix%2BHalf%2BSize.jpg`,
         artist: `Audionautix`,
         correct: false
       },
       {
+        value: `3`,
         img: `https://i.ytimg.com/vi/jzgM3m8Vp1k/maxresdefault.jpg`,
         artist: `Riot`,
         correct: false
