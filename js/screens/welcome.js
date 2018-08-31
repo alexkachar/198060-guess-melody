@@ -1,4 +1,4 @@
-import {getElementFromTemplate} from '../utils';
+import {getElementFromTemplate, renderScreen} from '../utils';
 import {changeScreen} from "./game";
 
 const template = `<section class="welcome">
@@ -15,9 +15,9 @@ const template = `<section class="welcome">
 
 const screenElement = getElementFromTemplate(template);
 
-let initWelcomeScreen = () => {
+let initWelcomeScreen = (nextScreen) => {
   const welcomeButton = screenElement.querySelector(`.welcome__button`);
-  welcomeButton.addEventListener(`click`, () => changeScreen());
+  welcomeButton.addEventListener(`click`, () => renderScreen(nextScreen));
 };
 
 export {screenElement, initWelcomeScreen};

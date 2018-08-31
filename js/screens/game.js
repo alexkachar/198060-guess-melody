@@ -48,6 +48,7 @@ const changeScreen = (state) => {
   } else if (levels[state.level].type === `artist`) {
     renderScreen(getGameTemplate(`artist`, headerTemplate, TITLES.artist, getArtistTemplate(levels[state.level])));
     state.level++;
+    debugger;
   } else if (levels[state.level].type === `genre`) {
     renderScreen(getGameTemplate(`genre`, headerTemplate, TITLES.genre.pop, getGenreTemplate(levels[state.level])));
     state.level++;

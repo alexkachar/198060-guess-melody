@@ -5,6 +5,7 @@ import {initFailTimeScreen, initFailTriesScreen, initSuccessScreen} from './scre
 
 
 renderScreen(welcomeScreenElement);
+
 initWelcomeScreen(genreScreenElement);
 initGenreScreen(artistScreenElement);
 initArtistScreen(welcomeScreenElement);
