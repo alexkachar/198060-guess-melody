@@ -39,17 +39,18 @@ const artistScreenElement = getElementFromTemplate(artistScreenTemplate);
 const genreScreenElement = getElementFromTemplate(genreScreenTemplate);
 
 const changeScreen = (state) => {
-  const questions = state.questions[state.level];
   if (state.notes < 0) {
     renderScreen(getResultTemplate(RESULTS_TITLES.failTries, RESULTS.failTries, BUTTONS.fail));
   } else if (state.time < 0) {
     renderScreen(getResultTemplate(RESULTS_TITLES.failTime, RESULTS.failTime, BUTTONS.fail));
   } else if (state.level === MAX_QUESTIONS) {
     renderScreen(getResultTemplate(RESULTS_TITLES.win, RESULTS.win, BUTTONS.win));
-  } else if (questions.type === `artist`) {
+  } else if (levels[state.level].type === `artist`) {
     renderScreen(getGameTemplate(`artist`, headerTemplate, TITLES.artist, getArtistTemplate(levels[state.level])));
-  } else if (questions.type === `genre`) {
+    state.level++;
+  } else if (levels[state.level].type === `genre`) {
     renderScreen(getGameTemplate(`genre`, headerTemplate, TITLES.genre.pop, getGenreTemplate(levels[state.level])));
+    state.level++;
   }
 };
 
