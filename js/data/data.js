@@ -1,5 +1,5 @@
-const gameState = Object.freeze({
-  level: 0,
+const initialGameState = Object.freeze({
+  level: 1,
   notes: 3,
   time: 300,
   points: 0
@@ -7,7 +7,9 @@ const gameState = Object.freeze({
 
 const game = {
   title: `Угадай мелодию`,
-  rules: [`За 5 минут нужно ответить на все вопросы.`, `Можно допустить 3 ошибки.`]
+  rules: [`За 5 минут нужно ответить на все вопросы.`, `Можно допустить 3 ошибки.`],
+  fastAnswer: 30,
+  maxQuestions: 10
 };
 
 const music = [{
@@ -315,4 +317,4 @@ const levels = {
   }
 };
 
-export {game, gameState, levels};
+export {game, initialGameState, levels};

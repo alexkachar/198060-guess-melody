@@ -47,4 +47,4 @@ const initSuccessScreen = (nextScreen) => {
   replayButton.addEventListener(`click`, () => renderScreen(nextScreen));
 };
 
-export {failTimeElement, failTriesElement, successElement, initFailTimeScreen, initFailTriesScreen, initSuccessScreen};
+export {TITLES, RESULTS, BUTTONS, failTimeElement, failTriesElement, successElement, initFailTimeScreen, initFailTriesScreen, initSuccessScreen, getResultTemplate};
