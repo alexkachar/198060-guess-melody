@@ -65,7 +65,7 @@ const getSuccessElement = (state, rivals) => {
 }
 
 const successScreen = (state) => {
-  renderScreen(state, rivalsMock);
+  renderScreen(getSuccessElement(state, rivalsMock));
 }
 
 export {TITLES, RESULTS, BUTTONS, failTimeElement, failTriesElement, successScreen, failTimeScreen, failTriesScreen, getResultTemplate};
