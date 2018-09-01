@@ -190,7 +190,7 @@ const levels = {
   },
   '7': {
     type: `genre`,
-    genre: `Jazz`,
+    genre: `jazz`,
     answers: [
       {
         audio: music[2].src,
@@ -249,7 +249,7 @@ const levels = {
     ]
   },
   '9': {
-    genre: `Country`,
+    genre: `country`,
     type: `genre`,
     answers: [
       {
@@ -279,7 +279,7 @@ const levels = {
     ]
   },
   '10': {
-    genre: `Jazz`,
+    genre: `jazz`,
     type: `genre`,
     answers: [
       {

@@ -33,21 +33,41 @@ export const genreScreen = (state) => {
   const backButton = genreScreenElement.querySelector(`.game__back`);
   backButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
 
-  const genreform = genreScreenElement.querySelector(`.game__tracks`);
+  const genreForm = genreScreenElement.querySelector(`.game__tracks`);
   const submitButton = genreScreenElement.querySelector(`.game__submit`);
   submitButton.disabled = true;
 
-  genreform.addEventListener(`click`, (event) => {
+  genreForm.addEventListener(`click`, (event) => {
     if (event.target.name === `answer`) {
-      const isAnswerChecked = genreform.querySelectorAll(`[name="answer"]:checked`);
+      const isAnswerChecked = genreForm.querySelectorAll(`[name="answer"]:checked`);
       submitButton.disabled = !isAnswerChecked.length;
     }
   });
 
   submitButton.addEventListener(`click`, (event) => {
     event.preventDefault();
-    genreform.reset();
+
+    const userAnswers = genreForm.querySelectorAll(`[name="answer"]`);
+
+    const isCorrect = Array.from(userAnswers).every((element) => {
+      const checked = element.checked;
+      const correct = element.value === `true`;
+
+      return checked === correct;
+    });
+
+
+    let newState;
+    const answer = {isCorrect, time: 25};
+
+    if (isCorrect) {
+      newState = Object.assign({}, state, {level: state.level + 1, answers: state.answers.concat(answer)});
+    } else {
+      newState = Object.assign({}, state, {notes: state.notes - 1, level: state.level + 1, answers: state.answers.concat(answer)});
+    }
+
+    genreForm.reset();
     submitButton.disabled = true;
-    changeScreen(state);
+    changeScreen(newState);
   });
 };
