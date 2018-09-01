@@ -313,7 +313,7 @@ const levels = {
 const initialGameState = Object.freeze({
   level: 1,
   notes: 3,
-  time: 300,
+  time: 200,
   points: 0,
   fastPoinsts: 0,
   answers: [],

@@ -1,6 +1,7 @@
 import {getElementFromTemplate, renderScreen} from '../utils';
 import {rivalsMock} from "../data/results";
 
+
 const TITLES = {
   failTime: `Увы и ах!`,
   failTries: `Какая жалость!`,
@@ -31,7 +32,6 @@ const getResultTemplate = (title, result, button) => {
 
 const failTimeElement = getElementFromTemplate(getResultTemplate(TITLES.failTime, RESULTS.failTime, BUTTONS.fail));
 const failTriesElement = getElementFromTemplate(getResultTemplate(TITLES.failTries, RESULTS.failTries, BUTTONS.fail));
-const successElement = getElementFromTemplate(getResultTemplate(TITLES.win, RESULTS.win, BUTTONS.win));
 
 const failTriesScreen = () => {
   renderScreen(failTriesElement);
@@ -41,8 +41,9 @@ const failTimeScreen = () => {
   renderScreen(failTimeElement);
 }
 
-const getSuccessElement = (state, rivals) => {
+const getSuccessTemplate = (state) => {
   const stats = [];
+  const rivals = rivalsMock;
 
   rivals.forEach((it) => {
     stats.push(it.points);
@@ -58,14 +59,14 @@ const getSuccessElement = (state, rivals) => {
   <section class="result">
     <div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
     <h2 class="result__title">Вы настоящий меломан!</h2>
-    <p class="result__total">За ${state.time} секунд вы набрали ${state.points} баллов (${state.fastPoints} быстрых), совершив ${3 - state.notes} ошибки</p>
+    <p class="result__total">За ${state.time} секунд вы набрали ${state.points} баллов (0 быстрых), совершив ${3 - state.notes} ошибки</p>
     <p class="result__text">Вы заняли ${playerPosition} место из ${stats.length} игроков. Это лучше, чем у ${percent}% игроков</p>
     <button class="result__replay" type="button">Сыграть ещё раз</button>
   </section>`;
 }
 
 const successScreen = (state) => {
-  renderScreen(getSuccessElement(state, rivalsMock));
+  renderScreen(getElementFromTemplate(getSuccessTemplate(state)));
 }
 
 export {TITLES, RESULTS, BUTTONS, failTimeElement, failTriesElement, successScreen, failTimeScreen, failTriesScreen, getResultTemplate};
