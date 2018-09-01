@@ -1,6 +1,5 @@
 import {getElementFromTemplate, renderScreen} from '../utils';
-import {rivalsMock} from "../data/results";
-
+import {getStats, rivalsMock} from "../data/results";
 
 const Titles = {
   FAIL_TIME: `Увы и ах!`,
@@ -69,4 +68,4 @@ const successScreen = (state) => {
   renderScreen(getElementFromTemplate(getSuccessTemplate(state)));
 }
 
-export {TITLES, RESULTS, BUTTONS, failTimeElement, failTriesElement, successScreen, failTimeScreen, failTriesScreen, getResultTemplate};
+export {failTimeElement, failTriesElement, successScreen, failTimeScreen, failTriesScreen, getResultTemplate};

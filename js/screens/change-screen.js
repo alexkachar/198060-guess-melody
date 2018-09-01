@@ -10,7 +10,7 @@ export const changeScreen = (state) => {
     failTriesScreen();
   } else if (state.time < 0) {
     failTimeScreen();
-  } else if (state.level === MAX_QUESTIONS) {
+  } else if (state.level > MAX_QUESTIONS) {
     successScreen(state);
   } else if (levels[state.level].type === `artist`) {
     artistScreen(state, changeScreen);
