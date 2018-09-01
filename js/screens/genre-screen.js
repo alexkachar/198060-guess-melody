@@ -3,13 +3,13 @@ import {getGenreTemplate} from "../templates/genre";
 import {getElementFromTemplate, renderScreen} from "../utils";
 import {screenElement as welcomeScreenElement} from "./welcome";
 
-const TITLES_MAP = {
-  jazz: `джазз`,
-  rock: `рок`,
-  country: `кантри`,
-  rnb: `R&B`,
-  pop: `поп`,
-  electronic: `электроник`
+const Titles = {
+  JAZZ: `джазз`,
+  ROCK: `рок`,
+  COUNTRY: `кантри`,
+  RNB: `R&B`,
+  POP: `поп`,
+  ELECTRONIC: `электроник`
 };
 
 const getGameTemplate = (gameHeader, gameTitle, gameScreen) => {
@@ -25,7 +25,7 @@ const getGameTemplate = (gameHeader, gameTitle, gameScreen) => {
 
 export const genreScreen = (state, changeScreen) => {
   const level = state.levels[state.level];
-  const genreScreenTemplate = getGameTemplate(headerTemplate, TITLES_MAP[level.genre], getGenreTemplate(level));
+  const genreScreenTemplate = getGameTemplate(headerTemplate, Titles[level.genre], getGenreTemplate(level));
   const genreScreenElement = getElementFromTemplate(genreScreenTemplate);
   renderScreen(genreScreenElement);
 

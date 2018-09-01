@@ -160,7 +160,7 @@ const levels = {
   },
   '6': {
     type: `genre`,
-    genre: `pop`,
+    genre: `POP`,
     answers: [
       {
         audio: music[4].src,
@@ -190,7 +190,7 @@ const levels = {
   },
   '7': {
     type: `genre`,
-    genre: `jazz`,
+    genre: `JAZZ`,
     answers: [
       {
         audio: music[2].src,
@@ -219,8 +219,8 @@ const levels = {
     ]
   },
   '8': {
-    genre: `rock`,
     type: `genre`,
+    genre: `ROCK`,
     answers: [
       {
         audio: music[2].src,
@@ -249,8 +249,8 @@ const levels = {
     ]
   },
   '9': {
-    genre: `country`,
     type: `genre`,
+    genre: `COUNTRY`,
     answers: [
       {
         audio: music[2].src,
@@ -279,8 +279,8 @@ const levels = {
     ]
   },
   '10': {
-    genre: `jazz`,
     type: `genre`,
+    genre: `JAZZ`,
     answers: [
       {
         audio: music[4].src,

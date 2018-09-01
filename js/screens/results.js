@@ -2,22 +2,22 @@ import {getElementFromTemplate, renderScreen} from '../utils';
 import {rivalsMock} from "../data/results";
 
 
-const TITLES = {
-  failTime: `Увы и ах!`,
-  failTries: `Какая жалость!`,
-  win: `Вы настоящий меломан!`
+const Titles = {
+  FAIL_TIME: `Увы и ах!`,
+  FAIL_TRIES: `Какая жалость!`,
+  WIN: `Вы настоящий меломан!`
 };
 
-const RESULTS = {
-  failTime: `<p class="result__total result__total--fail">Время вышло! Вы не успели отгадать все мелодии</p>`,
-  failTries: `<p class="result__total result__total--fail">У вас закончились все попытки. Ничего, повезёт в следующий раз!</p>`,
-  win: [`<p class="result__total">За 3 минуты и 25 секунд вы набрали 12 баллов (8 быстрых), совершив 3 ошибки</p>
+const Results = {
+  FAIL_TIME: `<p class="result__total result__total--fail">Время вышло! Вы не успели отгадать все мелодии</p>`,
+  FAIL_TRIES: `<p class="result__total result__total--fail">У вас закончились все попытки. Ничего, повезёт в следующий раз!</p>`,
+  WIN: [`<p class="result__total">За 3 минуты и 25 секунд вы набрали 12 баллов (8 быстрых), совершив 3 ошибки</p>
     `, `<p class="result__text">Вы заняли 2 место из 10. Это лучше чем у 80% игроков</p>`]
 };
 
-const BUTTONS = {
-  fail: `Попробовать ещё раз`,
-  win: `Сыграть ещё раз`
+const Buttons = {
+  FAIL: `Попробовать ещё раз`,
+  WIN: `Сыграть ещё раз`
 };
 
 const getResultTemplate = (title, result, button) => {
@@ -30,8 +30,8 @@ const getResultTemplate = (title, result, button) => {
   </section>`;
 };
 
-const failTimeElement = getElementFromTemplate(getResultTemplate(TITLES.failTime, RESULTS.failTime, BUTTONS.fail));
-const failTriesElement = getElementFromTemplate(getResultTemplate(TITLES.failTries, RESULTS.failTries, BUTTONS.fail));
+const failTimeElement = getElementFromTemplate(getResultTemplate(Titles.FAIL_TIME, Results.FAIL_TIME, Buttons.FAIL));
+const failTriesElement = getElementFromTemplate(getResultTemplate(Titles.FAIL_TRIES, Results.FAIL_TRIES, Buttons.FAIL));
 
 const failTriesScreen = () => {
   renderScreen(failTriesElement);
