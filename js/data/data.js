@@ -315,6 +315,7 @@ const initialGameState = Object.freeze({
   notes: 3,
   time: 300,
   points: 0,
+  fastPoinsts: 0,
   answers: [],
   levels
 });

@@ -1,7 +1,6 @@
 import {headerTemplate} from "../templates/header";
 import {getArtistTemplate} from "../templates/artist";
 import {getElementFromTemplate, renderScreen} from "../utils";
-import {changeScreen} from "./change-screen";
 import {screenElement as welcomeScreenElement} from "./welcome";
 
 const getGameTemplate = (gameHeader, gameScreen) => {
@@ -15,7 +14,7 @@ const getGameTemplate = (gameHeader, gameScreen) => {
   </section>`;
 };
 
-export const artistScreen = (state) => {
+export const artistScreen = (state, changeScreen) => {
   const level = state.levels[state.level];
   const artistScreenTemplate = getGameTemplate(headerTemplate, getArtistTemplate(level));
   const artistScreenElement = getElementFromTemplate(artistScreenTemplate);

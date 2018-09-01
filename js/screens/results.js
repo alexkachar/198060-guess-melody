@@ -1,4 +1,5 @@
 import {getElementFromTemplate, renderScreen} from '../utils';
+import {rivalsMock} from "../data/results";
 
 const TITLES = {
   failTime: `Увы и ах!`,
@@ -32,19 +33,39 @@ const failTimeElement = getElementFromTemplate(getResultTemplate(TITLES.failTime
 const failTriesElement = getElementFromTemplate(getResultTemplate(TITLES.failTries, RESULTS.failTries, BUTTONS.fail));
 const successElement = getElementFromTemplate(getResultTemplate(TITLES.win, RESULTS.win, BUTTONS.win));
 
-const initFailTimeScreen = (nextScreen) => {
-  const replayButton = failTimeElement.querySelector(`.result__replay`);
-  replayButton.addEventListener(`click`, () => renderScreen(nextScreen));
-};
+const failTriesScreen = () => {
+  renderScreen(failTriesElement);
+}
 
-const initFailTriesScreen = (nextScreen) => {
-  const replayButton = failTriesElement.querySelector(`.result__replay`);
-  replayButton.addEventListener(`click`, () => renderScreen(nextScreen));
-};
+const failTimeScreen = () => {
+  renderScreen(failTimeElement);
+}
 
-const initSuccessScreen = (nextScreen) => {
-  const replayButton = successElement.querySelector(`.result__replay`);
-  replayButton.addEventListener(`click`, () => renderScreen(nextScreen));
-};
+const getSuccessElement = (state, rivals) => {
+  const stats = [];
 
-export {TITLES, RESULTS, BUTTONS, failTimeElement, failTriesElement, successElement, initFailTimeScreen, initFailTriesScreen, initSuccessScreen, getResultTemplate};
+  rivals.forEach((it) => {
+    stats.push(it.points);
+  });
+
+  stats.push(state.points);
+  stats.sort((left, right) => right - left);
+
+  const playerPosition = stats.indexOf(state.points) + 1;
+  const percent = (stats.length - playerPosition) * 100 / stats.length;
+
+  return `
+  <section class="result">
+    <div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
+    <h2 class="result__title">Вы настоящий меломан!</h2>
+    <p class="result__total">За ${state.time} секунд вы набрали ${state.points} баллов (${state.fastPoints} быстрых), совершив ${3 - state.notes} ошибки</p>
+    <p class="result__text">Вы заняли ${playerPosition} место из ${stats.length} игроков. Это лучше, чем у ${percent}% игроков</p>
+    <button class="result__replay" type="button">Сыграть ещё раз</button>
+  </section>`;
+}
+
+const successScreen = (state) => {
+  renderScreen(state, rivalsMock);
+}
+
+export {TITLES, RESULTS, BUTTONS, failTimeElement, failTriesElement, successScreen, failTimeScreen, failTriesScreen, getResultTemplate};

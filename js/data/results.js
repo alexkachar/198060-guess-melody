@@ -22,4 +22,11 @@ const getStats = (rivals, playerStats) => {
   return `Вы заняли ${playerPosition} место из ${stats.length} игроков. Это лучше, чем у ${percent}% игроков`;
 };
 
-export {getStats};
+const rivalsMock = [
+  {isWinner: true, notesLeft: 3, timeLeft: 130, points: 19},
+  {isWinner: true, notesLeft: 3, timeLeft: 200, points: 18},
+  {isWinner: true, notesLeft: 2, timeLeft: 180, points: 12},
+  {isWinner: true, notesLeft: 1, timeLeft: 50, points: 10}
+];
+
+export {getStats, rivalsMock};
