@@ -1,11 +1,10 @@
-const getStats = (rivals, playerStats) => {
-  if (playerStats.time === 0) {
-    return `Время вышло! Вы не успели отгадать все мелодии`;
-  }
+const Results = {
+  FAIL_TIME: `Время вышло! Вы не успели отгадать все мелодии`,
+  FAIL_TRIES: `У вас закончились все попытки. Ничего, повезёт в следующий раз!`,
+  WIN: `За 3 минуты и 25 секунд вы набрали 12 баллов (8 быстрых), совершив 3 ошибки`
+};
 
-  if (playerStats.notes === 0) {
-    return `У вас закончились все попытки. Ничего, повезёт в следующий раз!`;
-  }
+const getStats = (rivals, playerStats) => {
 
   const stats = [];
 
@@ -22,6 +21,18 @@ const getStats = (rivals, playerStats) => {
   return `Вы заняли ${playerPosition} место из ${stats.length} игроков. Это лучше, чем у ${percent}% игроков`;
 };
 
+const getTotal = (state) => {
+  if (state.time === 0) {
+    return Results.FAIL_TIME;
+  }
+
+  if (state.notes === 0) {
+    return Results.FAIL_TRIES;
+  }
+
+  return Results.WIN;
+}
+
 const rivalsMock = [
   {isWinner: true, notes: 3, time: 130, points: 19},
   {isWinner: true, notes: 3, time: 200, points: 18},
@@ -29,4 +40,4 @@ const rivalsMock = [
   {isWinner: true, notes: 1, time: 50, points: 10}
 ];
 
-export {getStats, rivalsMock};
+export {getStats, rivalsMock, getTotal};
