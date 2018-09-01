@@ -1,17 +1,17 @@
 import {levels} from "../data/data";
 import {artistScreen} from "../screens/artist-screen";
 import {genreScreen} from "./genre-screen";
-import {failTimeScreen, failTriesScreen, successScreen} from "./results";
+import {resultScreen} from "./results";
 
 const MAX_QUESTIONS = 10;
 
 export const changeScreen = (state) => {
   if (state.notes < 0) {
-    failTriesScreen();
+    resultScreen(state);
   } else if (state.time < 0) {
-    failTimeScreen();
+    resultScreen(state);
   } else if (state.level > MAX_QUESTIONS) {
-    successScreen(state);
+    resultScreen(state);
   } else if (levels[state.level].type === `artist`) {
     artistScreen(state, changeScreen);
   } else if (levels[state.level].type === `genre`) {

@@ -8,10 +8,9 @@ const Titles = {
 };
 
 const Results = {
-  FAIL_TIME: `<p class="result__total result__total--fail">Время вышло! Вы не успели отгадать все мелодии</p>`,
-  FAIL_TRIES: `<p class="result__total result__total--fail">У вас закончились все попытки. Ничего, повезёт в следующий раз!</p>`,
-  WIN: [`<p class="result__total">За 3 минуты и 25 секунд вы набрали 12 баллов (8 быстрых), совершив 3 ошибки</p>
-    `, `<p class="result__text">Вы заняли 2 место из 10. Это лучше чем у 80% игроков</p>`]
+  FAIL_TIME: `Время вышло! Вы не успели отгадать все мелодии`,
+  FAIL_TRIES: `У вас закончились все попытки. Ничего, повезёт в следующий раз!`,
+  WIN: `За 3 минуты и 25 секунд вы набрали 12 баллов (8 быстрых), совершив 3 ошибки`
 };
 
 const Buttons = {
@@ -19,14 +18,26 @@ const Buttons = {
   WIN: `Сыграть ещё раз`
 };
 
-const getResultTemplate = (title, result, button) => {
+const getResultTemplate = (isFailed, title, result, button, winText) => {
   return `
   <section class="result">
     <div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
     <h2 class="result__title">${title}</h2>
-    ${result}
+    <p class="result__total ${isFailed ? `result__total--fail` : ``}">${result}</p>
+    ${!isFailed ? `<p class="result__text">${winText}</p>` : ``}
     <button class="result__replay" type="button">${button}</button>
   </section>`;
+};
+
+const resultScreen = (state) => {
+  const isFailed = (state.notes <= 0);
+  const text = getStats(rivalsMock, state);
+  const title = isFailed ? Titles.FAIL_TRIES : Titles.WIN;
+  const button = isFailed ? Buttons.FAIL : Buttons.WIN;
+  const winText = isFailed ? `` : Results.WIN;
+  const template = getResultTemplate(isFailed, title, text, button, winText);
+  const resultsElement = getElementFromTemplate(template);
+  renderScreen(resultsElement);
 };
 
 const failTimeElement = getElementFromTemplate(getResultTemplate(Titles.FAIL_TIME, Results.FAIL_TIME, Buttons.FAIL));
@@ -41,19 +52,6 @@ const failTimeScreen = () => {
 }
 
 const getSuccessTemplate = (state) => {
-  const stats = [];
-  const rivals = rivalsMock;
-
-  rivals.forEach((it) => {
-    stats.push(it.points);
-  });
-
-  stats.push(state.points);
-  stats.sort((left, right) => right - left);
-
-  const playerPosition = stats.indexOf(state.points) + 1;
-  const percent = (stats.length - playerPosition) * 100 / stats.length;
-
   return `
   <section class="result">
     <div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
@@ -68,4 +66,4 @@ const successScreen = (state) => {
   renderScreen(getElementFromTemplate(getSuccessTemplate(state)));
 }
 
-export {failTimeElement, failTriesElement, successScreen, failTimeScreen, failTriesScreen, getResultTemplate};
+export {failTimeElement, failTriesElement, successScreen, failTimeScreen, failTriesScreen, getResultTemplate, resultScreen};

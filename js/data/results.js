@@ -1,9 +1,9 @@
 const getStats = (rivals, playerStats) => {
-  if (playerStats.timeLeft === 0) {
+  if (playerStats.time === 0) {
     return `Время вышло! Вы не успели отгадать все мелодии`;
   }
 
-  if (playerStats.notesLeft === 0) {
+  if (playerStats.notes === 0) {
     return `У вас закончились все попытки. Ничего, повезёт в следующий раз!`;
   }
 
@@ -23,10 +23,10 @@ const getStats = (rivals, playerStats) => {
 };
 
 const rivalsMock = [
-  {isWinner: true, notesLeft: 3, timeLeft: 130, points: 19},
-  {isWinner: true, notesLeft: 3, timeLeft: 200, points: 18},
-  {isWinner: true, notesLeft: 2, timeLeft: 180, points: 12},
-  {isWinner: true, notesLeft: 1, timeLeft: 50, points: 10}
+  {isWinner: true, notes: 3, time: 130, points: 19},
+  {isWinner: true, notes: 3, time: 200, points: 18},
+  {isWinner: true, notes: 2, time: 180, points: 12},
+  {isWinner: true, notes: 1, time: 50, points: 10}
 ];
 
 export {getStats, rivalsMock};

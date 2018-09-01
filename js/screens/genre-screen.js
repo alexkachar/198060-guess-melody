@@ -39,7 +39,7 @@ export const genreScreen = (state, changeScreen) => {
   genreForm.addEventListener(`click`, (event) => {
     if (event.target.name === `answer`) {
       const isAnswerChecked = genreForm.querySelectorAll(`[name="answer"]:checked`);
-      submitButton.disabled = !isAnswerChecked.length;
+      submitButton.disabled = isAnswerChecked.length === 0;
     }
   });
 
