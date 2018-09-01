@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import {checkAnswers, initNotes} from '../scores.js';
+import {checkAnswers, initNotes} from './scores.js';
 
 let answersMock1 = [
   {isCorrect: false, time: 31},

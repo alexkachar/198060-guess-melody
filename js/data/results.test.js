@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import {getStats} from '../results.js';
+import {getStats} from './results.js';
 
 const statsMock1 = {
   isWinner: true,

@@ -12,7 +12,7 @@ export const getArtistTemplate = (level) => {
 const makeAnswers = (answers) => {
   return answers.map((answer, index) => `
      <div class="artist">
-        <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-${index}" id="answer-${index}">
+        <input class="artist__input visually-hidden" type="radio" name="answer" value="${answer.correct}" id="answer-${index}">
         <label class="artist__name" for="answer-${index}">
           <img class="artist__picture" src="${answer.img}" alt="${answer.artist}">
           ${answer.artist}

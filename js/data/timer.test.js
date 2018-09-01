@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import {setTimer} from '../timer.js';
+import {setTimer} from './timer.js';
 
 describe(`Game timer function`, () => {
   it(`Function returns an Object`, () => {

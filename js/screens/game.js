@@ -5,7 +5,6 @@ import {getArtistTemplate} from '../templates/artist';
 import {levels, initialGameState} from '../data/data';
 import {TITLES as RESULTS_TITLES, RESULTS, BUTTONS, getResultTemplate} from '../screens/results';
 
-const MAX_QUESTIONS = 10;
 
 const TITLES = {
   artist: `Кто исполняет эту песню?`,
@@ -38,33 +37,7 @@ const genreScreenTemplate = getGameTemplate(`genre`, headerTemplate, TITLES.genr
 const artistScreenElement = getElementFromTemplate(artistScreenTemplate);
 const genreScreenElement = getElementFromTemplate(genreScreenTemplate);
 
-const changeScreen = (state) => {
-  if (state.notes < 0) {
-    renderScreen(getResultTemplate(RESULTS_TITLES.failTries, RESULTS.failTries, BUTTONS.fail));
-  } else if (state.time < 0) {
-    renderScreen(getResultTemplate(RESULTS_TITLES.failTime, RESULTS.failTime, BUTTONS.fail));
-  } else if (state.level === MAX_QUESTIONS) {
-    renderScreen(getResultTemplate(RESULTS_TITLES.win, RESULTS.win, BUTTONS.win));
-  } else if (levels[state.level].type === `artist`) {
-    renderScreen(getGameTemplate(`artist`, headerTemplate, TITLES.artist, getArtistTemplate(levels[state.level])));
-    state.level++;
-    debugger;
-  } else if (levels[state.level].type === `genre`) {
-    renderScreen(getGameTemplate(`genre`, headerTemplate, TITLES.genre.pop, getGenreTemplate(levels[state.level])));
-    state.level++;
-  }
-};
 
-const initArtistScreen = (prevScreen) => {
-  const backButton = artistScreenElement.querySelector(`.game__back`);
-  backButton.addEventListener(`click`, () => renderScreen(prevScreen));
-
-  const artistButtons = artistScreenElement.querySelectorAll(`.artist__name`);
-
-  artistButtons.forEach((element) => {
-    element.addEventListener(`click`, () => changeScreen(currentState));
-  });
-};
 
 const initGenreScreen = (nextScreen) => {
   const backButton = genreScreenElement.querySelector(`.game__back`);
@@ -89,4 +62,4 @@ const initGenreScreen = (nextScreen) => {
   });
 };
 
-export {artistScreenElement, genreScreenElement, initArtistScreen, initGenreScreen, changeScreen, currentState};
+export {artistScreenElement, genreScreenElement, initArtistScreen, initGenreScreen, TITLES, currentState};

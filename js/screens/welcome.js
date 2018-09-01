@@ -1,5 +1,7 @@
-import {getElementFromTemplate, renderScreen} from '../utils';
-import {changeScreen} from "./game";
+import {getElementFromTemplate} from '../utils';
+import {initialGameState} from "../data/data";
+import {changeScreen} from "./change-screen";
+
 
 const template = `<section class="welcome">
   <div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
@@ -15,9 +17,10 @@ const template = `<section class="welcome">
 
 const screenElement = getElementFromTemplate(template);
 
-let initWelcomeScreen = (nextScreen) => {
-  const welcomeButton = screenElement.querySelector(`.welcome__button`);
-  welcomeButton.addEventListener(`click`, () => renderScreen(nextScreen));
-};
+const welcomeButton = screenElement.querySelector(`.welcome__button`);
+welcomeButton.addEventListener(`click`, () => {
+  let state = Object.assign({}, initialGameState);
+  changeScreen(state);
+});
 
-export {screenElement, initWelcomeScreen};
+export {screenElement};
