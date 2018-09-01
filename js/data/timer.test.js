@@ -1,16 +1,16 @@
 import {assert} from 'chai';
-import {setTimer} from '../timer.js';
+import {setTimer} from './timer.js';
 
-describe(`Функция игрового таймера`, () => {
-  it(`Таймер возвращает объект`, () => {
+describe(`Game timer function`, () => {
+  it(`Function returns an Object`, () => {
     assert.isObject(setTimer(300));
   });
 
-  it(`Время осталось`, () => {
-    assert.equal(149, setTimer(150).tick());
+  it(`Times left`, () => {
+    assert.equal(setTimer(150).tick(), 149);
   });
 
-  it(`Время вышло`, () => {
-    assert.equal(`Ваше время вышло`, setTimer(1).tick());
+  it(`Time is out`, () => {
+    assert.equal(setTimer(1).tick(), `Ваше время вышло`);
   });
 });

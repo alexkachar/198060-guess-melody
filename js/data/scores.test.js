@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import {checkAnswers, initPlayerNotes} from '../scores.js';
+import {checkAnswers, initNotes} from './scores.js';
 
 let answersMock1 = [
   {isCorrect: false, time: 31},
@@ -40,16 +40,16 @@ let answersMock3 = [
   {isCorrect: true, time: 15},
 ];
 
-describe(`Функция подсчёта набранных баллов игрока`, () => {
-  it(`Если игрок ответил меньше, чем на 10 вопросов, то игра считается не пройденной и функция должна вернуть -1`, () => {
-    assert.equal(-1, checkAnswers(answersMock1, initPlayerNotes));
+describe(`Players score calculating function`, () => {
+  it(`If the player answers less than 10 questions, then the game is considered not passed and the function should return -1`, () => {
+    assert.equal(checkAnswers(answersMock1, initNotes), -1);
   });
 
-  it(`Если игрок ответил на все вопросы правильно и не быстро, и ни разу не ошибся, то функция должна вернуть 10 баллов`, () => {
-    assert.equal(10, checkAnswers(answersMock2, initPlayerNotes));
+  it(`If the player answered all the questions correctly and not quickly, and never made a mistake, then the function should return 10 points`, () => {
+    assert.equal(checkAnswers(answersMock2, initNotes), 10);
   });
 
-  it(`Если игрок ответил на все вопросы правильно и быстро, и ни разу не ошибся, то функция должна вернуть 20 баллов`, () => {
-    assert.equal(20, checkAnswers(answersMock3, initPlayerNotes));
+  it(`If the player answered all the questions correctly and quickly, and never made a mistake, then the function should return 20 points`, () => {
+    assert.equal(checkAnswers(answersMock3, initNotes), 20);
   });
 });
