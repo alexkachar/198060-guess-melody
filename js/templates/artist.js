@@ -1,7 +1,7 @@
 export const getArtistTemplate = (level) => {
   return `<div class="game__track">
       <button class="track__button track__button--play" type="button"></button>
-      <audio src ="${level.audio}"></audio>
+      <audio src ="${level.audio}" autoplay></audio>
     </div>
 
     <form class="game__artist">

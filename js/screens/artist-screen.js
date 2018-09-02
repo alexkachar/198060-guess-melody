@@ -20,6 +20,19 @@ export const artistScreen = (state, changeScreen) => {
   const artistScreenElement = getElementFromTemplate(artistScreenTemplate);
   renderScreen(artistScreenElement);
 
+  const audio = artistScreenElement.querySelector(`audio`);
+  const playerButton = artistScreenElement.querySelector(`.track__button`);
+
+  playerButton.addEventListener(`click`, (evt) => {
+    evt.preventDefault();
+    if (playerButton.classList.contains(`track__button--pause`)) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+    playerButton.classList.toggle(`track__button--pause`);
+  });
+
   const backButton = artistScreenElement.querySelector(`.game__back`);
   backButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
 
