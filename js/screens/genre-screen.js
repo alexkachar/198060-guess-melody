@@ -29,6 +29,31 @@ export const genreScreen = (state, changeScreen) => {
   const genreScreenElement = getElementFromTemplate(genreScreenTemplate);
   renderScreen(genreScreenElement);
 
+
+  const audio = Array.from(genreScreenElement.querySelectorAll(`audio`));
+  const playerButtons = Array.from(genreScreenElement.querySelectorAll(`.track__button`));
+  playerButtons[0].classList.add(`track__button--pause`);
+  audio[0].play();
+
+  playerButtons.forEach((btn, index) => {
+    btn.addEventListener(`click`, (event) => {
+      event.preventDefault();
+
+      if (btn.classList.contains(`track__button--pause`)) {
+        btn.classList.remove(`track__button--pause`);
+        audio[index].pause();
+      } else {
+        for (let i = 0; i < playerButtons.length; i++) {
+          playerButtons[i].classList.remove(`track__button--pause`);
+          audio[i].pause();
+        }
+
+        btn.classList.add(`track__button--pause`);
+        audio[index].play();
+      }
+    });
+  });
+
   const backButton = genreScreenElement.querySelector(`.game__back`);
   backButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
 

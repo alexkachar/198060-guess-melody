@@ -10,7 +10,7 @@ const makeAnswers = (answers) => {
   <div class="track">
       <button class="track__button track__button--play" type="button"></button>
         <div class="track__status">
-        <audio src ="${answer.audio}"></audio>
+        <audio src ="${answer.audio}" ${answer.autoplay ? `autoplay` : ``}></audio>
       </div>
 
     <div class="game__answer">

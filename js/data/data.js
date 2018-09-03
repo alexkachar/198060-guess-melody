@@ -295,13 +295,13 @@ const levels = {
         autoplay: false
       },
       {
-        audio: music[5].image,
+        audio: music[5].src,
         genre: music[5].genre,
         correct: true,
         autoplay: false
       },
       {
-        audio: music[5].image,
+        audio: music[5].src,
         genre: music[5].genre,
         correct: true,
         autoplay: false
