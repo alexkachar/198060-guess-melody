@@ -1,5 +1,5 @@
-import {headerTemplate} from "../templates/header";
-import {getGenreTemplate} from "../templates/genre";
+import {headerTemplate} from "../templates/header-template";
+import {getGenreTemplate} from "../templates/genre-template";
 import {getElementFromTemplate, renderScreen} from "../utils";
 import {screenElement as welcomeScreenElement} from "./welcome";
 

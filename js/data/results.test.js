@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import {getStats} from './results.js';
+import {getStats, rivalsMock} from './results.js';
 
 const statsMock1 = {
   isWinner: true,
@@ -21,13 +21,6 @@ const statsMock3 = {
   time: 30,
   points: 6
 };
-
-const rivalsMock = [
-  {isWinner: true, notes: 3, time: 130, points: 19},
-  {isWinner: true, notes: 3, time: 200, points: 18},
-  {isWinner: true, notes: 2, time: 180, points: 12},
-  {isWinner: true, notes: 1, time: 50, points: 10}
-];
 
 describe(`Player result output function`, () => {
   it(`If the player wins, the returned message is correct`, () => {

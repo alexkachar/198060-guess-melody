@@ -9,7 +9,7 @@ export const getArtistTemplate = (level) => {
     </form>`;
 };
 
-const makeAnswers = (answers) => {
+export const makeAnswers = (answers) => {
   return answers.map((answer, index) => `
      <div class="artist">
         <input class="artist__input visually-hidden" type="radio" name="answer" value="${answer.correct}" id="answer-${index}">
@@ -19,5 +19,3 @@ const makeAnswers = (answers) => {
         </label>
      </div>`).join(``);
 };
-
-

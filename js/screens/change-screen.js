@@ -1,7 +1,7 @@
 import {levels} from "../data/data";
 import {artistScreen} from "../screens/artist-screen";
 import {genreScreen} from "./genre-screen";
-import {resultScreen} from "./results";
+import {resultScreen} from "./results-screen";
 
 const MAX_QUESTIONS = 10;
 

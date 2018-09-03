@@ -1,5 +1,5 @@
-import {headerTemplate} from "../templates/header";
-import {getArtistTemplate} from "../templates/artist";
+import {headerTemplate} from "../templates/header-template";
+import {getArtistTemplate} from "../templates/artist-template";
 import {getElementFromTemplate, renderScreen} from "../utils";
 import {screenElement as welcomeScreenElement} from "./welcome";
 
