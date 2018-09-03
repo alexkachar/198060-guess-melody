@@ -38,33 +38,20 @@ export default class ArtistView extends AbstractView {
 
     const audio = artistScreenElement.querySelector(`audio`);
     const playerButton = artistScreenElement.querySelector(`.track__button`);
-
-    playerButton.addEventListener(`click`, (evt) => {
-      evt.preventDefault();
-      if (playerButton.classList.contains(`track__button--pause`)) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-      playerButton.classList.toggle(`track__button--pause`);
-    });
+    playerButton.addEventListener(`click`, this.onPlayerButtonClick);
 
     const backButton = artistScreenElement.querySelector(`.game__back`);
-    backButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
+    backButton.addEventListener(`click`, () => this.onBackButtonClick);
 
     const artistButtons = artistScreenElement.querySelectorAll(`.artist`);
-
     artistButtons.forEach((element) => {
-      element.addEventListener(`click`, () => {
-        let newState;
-        const answer = {isCorrect: element.querySelector(`input`).value === `true`, time: 25};
-        if (element.querySelector(`input`).value === `true`) {
-          newState = Object.assign({}, state, {level: state.level + 1, answers: state.answers.concat(answer)});
-        } else {
-          newState = Object.assign({}, state, {notes: state.notes - 1, level: state.level + 1, answers: state.answers.concat(answer)});
-        }
-        changeScreen(newState);
-      });
+      element.addEventListener(`click`, this.onArtistButtonClick);
     });
   }
+
+  onPlayerButtonClick() {}
+
+  onBackButtonClick() {}
+
+  onArtistButtonClick() {}
 }
