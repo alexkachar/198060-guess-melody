@@ -1,4 +1,4 @@
-import {AbstractView} from "../views/abstract-view";
+import AbstractView from "../views/abstract-view";
 
 export default class ArtistView extends AbstractView {
   constructor(level) {
@@ -30,6 +30,12 @@ export default class ArtistView extends AbstractView {
     const backButton = element.querySelector(`.game__back`);
     backButton.addEventListener(`click`, this.onBackButtonClick);
 
+    const playerButton = element.querySelector(`.track__button`);
+    playerButton.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+      this.onPlayerButtonClick();
+    });
+
     const artistButtons = element.querySelectorAll(`.artist`);
     artistButtons.forEach((button) => {
       button.addEventListener(`click`, () => {
@@ -38,11 +44,6 @@ export default class ArtistView extends AbstractView {
       });
     });
 
-    const playerButton = element.querySelector(`.track__button`);
-    playerButton.addEventListener(`click`, (evt) => {
-      evt.preventDefault();
-      this.onPlayerButtonClick();
-    });
   }
 
   onBackButtonClick() {}
