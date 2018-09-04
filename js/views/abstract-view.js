@@ -1,4 +1,8 @@
-import {getElementFromTemplate, renderScreen} from '../utils';
+const getElementFromTemplate = (template) => {
+  const wrapper = document.createElement(`div`);
+  wrapper.innerHTML = template.trim();
+  return wrapper;
+}
 
 export default class AbstractView {
   constructor() {
@@ -22,7 +26,7 @@ export default class AbstractView {
   }
 
   render() {
-    return renderScreen(getElementFromTemplate(this.template));
+    return getElementFromTemplate(this.template);
   }
 
   bind() {

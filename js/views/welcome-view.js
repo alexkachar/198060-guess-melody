@@ -1,8 +1,9 @@
 import AbstractView from "../views/abstract-view";
 
 export default class WelcomeView extends AbstractView {
-  constructor() {
+  constructor(rules) {
     super();
+    this.rules = rules;
   }
 
   get template() {
@@ -13,12 +14,15 @@ export default class WelcomeView extends AbstractView {
         <h2 class="welcome__rules-title">Правила игры</h2>
         <p class="welcome__text">Правила просты:</p>
         <ul class="welcome__rules-list">
-          <li>За 5 минут нужно ответить на все вопросы.</li>
-          <li>Можно допустить 3 ошибки.</li>
+          ${this.getRulesTemplate}
         </ul>
         <p class="welcome__text">Удачи!</p>
       </section>
     `;
+  }
+
+  get getRulesTemplate() {
+    return this.rules.map((it) => `<li>${it}</li>`).join(``);
   }
 
   bind(element) {
@@ -26,5 +30,7 @@ export default class WelcomeView extends AbstractView {
     welcomeButton.addEventListener(`click`, this.onWelcomeButtonClick);
   }
 
-  onWelcomeButtonClick() {}
+  onWelcomeButtonClick() {
+
+  }
 }

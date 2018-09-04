@@ -1,4 +1,5 @@
 import AbstractView from "../views/abstract-view";
+import {headerTemplate} from "../templates/header-template";
 
 export default class ArtistView extends AbstractView {
   constructor(level) {
@@ -9,7 +10,7 @@ export default class ArtistView extends AbstractView {
   get template() {
     return `
       <section class="game game--genre">
-        ${gameHeader}
+        ${headerTemplate}
         <section class="game__screen">
           <h2 class="game__title">Выберите все треки в стиле ${gameTitle}</h2>
           ${gameScreen}

@@ -56,7 +56,6 @@
 import {headerTemplate} from "../templates/header-template";
 import {getArtistTemplate} from "../templates/artist-template";
 import {getElementFromTemplate, renderScreen} from "../utils";
-import {screenElement as welcomeScreenElement} from "./welcome-screen";
 
 const getGameTemplate = (gameHeader, gameScreen) => {
   return `
@@ -89,7 +88,7 @@ export const artistScreen = (state, changeScreen) => {
   });
 
   const backButton = artistScreenElement.querySelector(`.game__back`);
-  backButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
+  // backButton.addEventListener(`click`, () => renderScreen(welcomeScreenElement));
 
   const artistButtons = artistScreenElement.querySelectorAll(`.artist`);
 
