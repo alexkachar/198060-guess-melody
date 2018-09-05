@@ -1,7 +1,7 @@
 import AbstractView from "../views/abstract-view";
 import {headerTemplate} from "../templates/header-template";
 
-export default const genreView = class ArtistView extends AbstractView {
+export default class genreView extends AbstractView {
   constructor(level) {
     super();
     this.level = level;
