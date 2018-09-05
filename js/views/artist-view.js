@@ -35,7 +35,12 @@ export default class ArtistView extends AbstractView {
     const audio = element.querySelector(`audio`);
     playerButton.addEventListener(`click`, (evt) => {
       evt.preventDefault();
-      this.onPlayerButtonClick(evt, audio);
+      if (playerButton.classList.contains(`track__button--pause`)) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+      playerButton.classList.toggle(`track__button--pause`);
     });
 
     const artistButtons = element.querySelectorAll(`.artist`);
@@ -46,8 +51,6 @@ export default class ArtistView extends AbstractView {
   }
 
   onBackButtonClick() {}
-
-  onPlayerButtonClick() {}
 
   onArtistButtonClick() {}
 }
