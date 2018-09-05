@@ -51,8 +51,8 @@ const music = [{
 
 const levels = {
   '1': {
-    audio: music[0].src,
     type: `artist`,
+    audio: music[0].src,
     answers: [
       {
         value: `1`,
@@ -280,7 +280,7 @@ const levels = {
   },
   '10': {
     type: `genre`,
-    genre: `JAZZ`,
+    genre: `ELECTRONIC`,
     answers: [
       {
         audio: music[4].src,
