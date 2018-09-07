@@ -42,6 +42,5 @@ export const gameScreen = (state, changeScreen) => {
     changeScreen(newState);
   };
 
-    return genreView.element;
-  }
+  return genreView.element;
 };
