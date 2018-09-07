@@ -74,7 +74,7 @@ export default class genreView extends AbstractView {
     submitButton.addEventListener(`click`, (evt) => {
       evt.preventDefault();
       const userAnswers = genreForm.querySelectorAll(`[name="answer"]`);
-      this.onSubmitButtonClick(userAnswers);
+      this.onAnswerClick(userAnswers);
       genreForm.reset();
       submitButton.disabled = true;
     });
@@ -82,5 +82,5 @@ export default class genreView extends AbstractView {
 
   onBackButtonClick() {}
 
-  onSubmitButtonClick() {}
+  onAnswerClick() {}
 }

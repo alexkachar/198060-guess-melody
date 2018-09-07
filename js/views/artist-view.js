@@ -51,12 +51,12 @@ export default class ArtistView extends AbstractView {
     artistButtons.forEach((button) => {
       button.addEventListener(`click`, () => {
         const isCorrect = button.querySelector(`input`).value === `true`;
-        this.onArtistButtonClick(isCorrect);
+        this.onAnswerClick(isCorrect);
       });
     });
   }
 
   onBackButtonClick() {}
 
-  onArtistButtonClick() {}
+  onAnswerClick() {}
 }

@@ -18,9 +18,9 @@ const GameView = {
 export const gameScreen = (state, changeScreen) => {
   const level = state.levels[state.level];
   const levelType = level.type;
-  const genreView = new GameView[levelType](level);
+  const gameView = new GameView[levelType](level);
 
-  genreView.onSubmitButtonClick = (userAnswers) => {
+  gameView.onAnswerClick = (userAnswers) => {
     let isCorrect = userAnswers;
     if (levelType === `genre`) {
       isCorrect = Array.from(userAnswers).every((element) => {
@@ -42,5 +42,5 @@ export const gameScreen = (state, changeScreen) => {
     changeScreen(newState);
   };
 
-  return genreView.element;
+  return gameView.element;
 };
