@@ -1,8 +1,7 @@
 import {levels} from "../data/data";
-import {artistScreen} from "../screens/artist-screen";
-import {genreScreen} from "./genre-screen";
 import {resultScreen} from "./results-screen";
 import {renderScreen} from "../utils";
+import {genreScreen} from "./game-screen";
 
 const MAX_QUESTIONS = 10;
 
@@ -14,9 +13,8 @@ export const changeScreen = (state) => {
   } else if (state.level > MAX_QUESTIONS) {
     renderScreen(resultScreen(state));
   } else if (levels[state.level].type === `artist`) {
-    renderScreen(artistScreen(state, changeScreen));
+    renderScreen(genreScreen(state, changeScreen));
   } else if (levels[state.level].type === `genre`) {
     renderScreen(genreScreen(state, changeScreen));
   }
 };
-

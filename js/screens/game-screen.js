@@ -1,4 +1,5 @@
 import GenreView from "../views/genre-view";
+import ArtistView from "../views/artist-view";
 
 export const Titles = {
   JAZZ: `джазз`,
@@ -9,17 +10,26 @@ export const Titles = {
   ELECTRONIC: `электроник`
 };
 
-export const genreScreen = (state, changeScreen) => {
+const GameView = {
+  artist: ArtistView,
+  genre: GenreView
+}
+
+export const gameScreen = (state, changeScreen) => {
   const level = state.levels[state.level];
-  const genreView = new GenreView(level);
+  const levelType = level.type;
+  const genreView = new GameView[levelType](level);
 
   genreView.onSubmitButtonClick = (userAnswers) => {
-    const isCorrect = Array.from(userAnswers).every((element) => {
-      const checked = element.checked;
-      const correct = element.value === `true`;
+    let isCorrect = userAnswers;
+    if (levelType === `genre`) {
+      isCorrect = Array.from(userAnswers).every((element) => {
+        const checked = element.checked;
+        const correct = element.value === `true`;
 
-      return checked === correct;
-    });
+        return checked === correct;
+      });
+    }
 
 
     let newState;
@@ -32,5 +42,6 @@ export const genreScreen = (state, changeScreen) => {
     changeScreen(newState);
   };
 
-  return genreView.element;
+    return genreView.element;
+  }
 };

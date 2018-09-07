@@ -1,6 +1,6 @@
 import AbstractView from "../views/abstract-view";
 import {headerTemplate} from "../templates/header-template";
-import {Titles} from "../screens/genre-screen";
+import {Titles} from "../screens/game-screen";
 
 export default class genreView extends AbstractView {
   constructor(level) {
