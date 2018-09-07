@@ -9,5 +9,6 @@ export const welcomeScreen = new WelcomeView(RULES);
 welcomeScreen.onWelcomeButtonClick = () => {
   let state = Object.assign({}, initialGameState);
   changeScreen(state);
+  console.log(`clicked`, `welcome Button`);
 };
 

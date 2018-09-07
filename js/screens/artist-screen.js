@@ -1,6 +1,7 @@
 import ArtistView from "../views/artist-view";
+import {changeScreen} from "../screens/change-screen"
 
-export const artistScreen = (state, changeScreen) => {
+export const artistScreen = (state) => {
   const level = state.levels[state.level];
   const artistView = new ArtistView(level);
 
