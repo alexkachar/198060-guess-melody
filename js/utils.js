@@ -4,6 +4,9 @@ const getElementFromTemplate = (template) => {
   const wrapper = document.createElement(`div`);
   wrapper.innerHTML = template;
   return wrapper.children[0];
+  // const wrapper = document.createElement(`div`);
+  // wrapper.innerHTML = template.trim();
+  // return wrapper;
 };
 
 const renderScreen = (gameScreen) => {

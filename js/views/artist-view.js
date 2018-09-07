@@ -13,6 +13,10 @@ export default class ArtistView extends AbstractView {
         ${headerTemplate}
         <section class="game__screen">
           <h2 class="game__title">Кто исполняет эту песню?</h2>
+          <div class="game__track">
+            <button class="track__button track__button--play" type="button"></button>
+            <audio src ="${this.level.audio}" autoplay></audio>
+          </div>
             <form class="game__artist">
               ${this.level.answers.map((answer, index) => `
                 <div class="artist">
@@ -21,7 +25,7 @@ export default class ArtistView extends AbstractView {
                       <img class="artist__picture" src="${answer.img}" alt="${answer.artist}">
                       ${answer.artist}
                     </label>
-                </div>`).join(``)}
+                </div>`).join(``)} 
             </form>
         </section>
       </section>`;
