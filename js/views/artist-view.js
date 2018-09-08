@@ -1,5 +1,4 @@
 import AbstractView from "../views/abstract-view";
-import {headerTemplate} from "../templates/header-template";
 
 export default class ArtistView extends AbstractView {
   constructor(level) {
@@ -9,8 +8,6 @@ export default class ArtistView extends AbstractView {
 
   get template() {
     return `
-      <section class="game game--artist">
-        ${headerTemplate}
         <section class="game__screen">
           <h2 class="game__title">Кто исполняет эту песню?</h2>
           <div class="game__track">
@@ -27,14 +24,10 @@ export default class ArtistView extends AbstractView {
                     </label>
                 </div>`).join(``)} 
             </form>
-        </section>
-      </section>`;
+        </section>`;
   }
 
   bind(element) {
-    const backButton = element.querySelector(`.game__back`);
-    backButton.addEventListener(`click`, this.onBackButtonClick);
-
     const playerButton = element.querySelector(`.track__button`);
     const audio = element.querySelector(`audio`);
     playerButton.addEventListener(`click`, (evt) => {
@@ -55,8 +48,6 @@ export default class ArtistView extends AbstractView {
       });
     });
   }
-
-  onBackButtonClick() {}
 
   onAnswerClick() {}
 }

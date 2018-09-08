@@ -31,7 +31,6 @@ export const gameScreen = (state, changeScreen) => {
       });
     }
 
-
     let newState;
     const answer = {isCorrect, time: 25};
     if (isCorrect) {
