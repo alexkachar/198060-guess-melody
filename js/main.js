@@ -1,4 +1,3 @@
-import Application from "./application/application";
+import Router from "./router/router";
 
-Application.showWelcomeScreen();
-
+Router.showWelcomeScreen();

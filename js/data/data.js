@@ -310,7 +310,7 @@ const levels = {
   }
 };
 
-const initialGameState = Object.freeze({
+export const initialGameState = Object.freeze({
   level: 1,
   notes: 3,
   time: 200,
@@ -319,4 +319,4 @@ const initialGameState = Object.freeze({
   levels
 });
 
-export {game, initialGameState, levels};
+export {game, levels};
