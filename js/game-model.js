@@ -1,4 +1,4 @@
-import {initialGameState} from "../data/data";
+import {initialGameState} from "./data/data";
 
 const getLevel = (state) => initialGameState[`${state.level}`];
 

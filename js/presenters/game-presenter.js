@@ -1,7 +1,6 @@
 import GenreView from "../views/genre-view";
 import ArtistView from "../views/artist-view";
 import HeaderView from "../views/header-view";
-import AbstractView from "../views/abstract-view";
 
 const Titles = {
   JAZZ: `джазз`,

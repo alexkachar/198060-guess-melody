@@ -1,3 +1,3 @@
-import Router from "./router/router";
+import Router from "./router";
 
 Router.showWelcomeScreen();
