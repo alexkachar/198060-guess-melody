@@ -28,8 +28,14 @@ export default class GameModel {
     return this._state;
   }
 
-  answer(isCorrect) {}
-
+  answer(isCorrect) {
+    const answer = {isCorrect, time: this._state.time};
+    if (isCorrect) {
+      this._state = Object.assign({}, this._state, {level: this._state.level + 1, answers: this._state.answers.concat(answer)});
+    } else {
+      this._state = Object.assign({}, this._state, {notes: this._state.notes - 1, level: this._state.level + 1, answers: this._state.answers.concat(answer)});
+    }
+  }
 }
 
 

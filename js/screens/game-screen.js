@@ -13,7 +13,7 @@ export const Titles = {
 const GameView = {
   artist: ArtistView,
   genre: GenreView
-}
+};
 
 export const gameScreen = (state, changeScreen) => {
   const level = state.levels[state.level];

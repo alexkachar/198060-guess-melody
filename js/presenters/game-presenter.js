@@ -29,7 +29,6 @@ export default class GamePresenter {
     this.root.classList.add(`game--${this.levelType}`);
     this.root.appendChild(this.header.element);
     this.root.appendChild(this.content.element);
-    console.log(this.root);
   }
 
   get element() {
@@ -53,24 +52,17 @@ export default class GamePresenter {
   }
 
   onAnswerClick(userAnswers) {
-    // let isCorrect = userAnswers;
-    // if (this.levelType === `genre`) {
-    //   isCorrect = Array.from(userAnswers).every((element) => {
-    //     const checked = element.checked;
-    //     const correct = element.value === `true`;
-    //
-    //     return checked === correct;
-    //   });
-    // }
-    //
-    // let newState;
-    // const answer = {isCorrect, time: 25};
-    // if (isCorrect) {
-    //   newState = Object.assign({}, this.state, {level: this.state.level + 1, answers: this.state.answers.concat(answer)});
-    // } else {
-    //   newState = Object.assign({}, this.state, {notes: this.state.notes - 1, level: this.state.level + 1, answers: this.state.answers.concat(answer)});
-    // }
-    // changeScreen(newState);
+    let isCorrect = userAnswers;
+    if (this.levelType === `genre`) {
+      isCorrect = Array.from(userAnswers).every((element) => {
+        const checked = element.checked;
+        const correct = element.value === `true`;
+        return checked === correct;
+      });
+    }
+    this.model.answer(isCorrect);
+    // this.changeLevel();
+
   }
 
   changeContentView(view) {
