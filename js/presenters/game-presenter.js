@@ -1,6 +1,7 @@
 import GenreView from "../views/genre-view";
 import ArtistView from "../views/artist-view";
-import HeaderView from "../views/header-v";
+import HeaderView from "../views/header-view";
+import AbstractView from "../views/abstract-view";
 
 const Titles = {
   JAZZ: `джазз`,
@@ -25,9 +26,11 @@ export default class GamePresenter {
     this.content = new GameView[this.levelType](this.model.state);
 
     this.root = document.createElement(`section`);
-    this.root.classList.add(`game game--${this.levelType}`);
+    this.root.classList.add(`game`);
+    this.root.classList.add(`game--${this.levelType}`);
     this.root.appendChild(this.header.element);
     this.root.appendChild(this.content.element);
+    console.log(this.root);
   }
 
   get element() {
@@ -35,12 +38,10 @@ export default class GamePresenter {
   }
 
   changeLevel() {
-    this.changeLevel();
-
-    this._interval = setInterval(() => {
-      this.model.tick();
-      this.updateHeader();
-    }, 1000);
+    const level = this.model.getCurrentLevel();
+    const content = new GameView[this.levelType](level);
+    content.onAnswerClick = this.onAnswerClick.bind(this);
+    this.changeContentView(content);
   }
 
   startGame() {

@@ -8,7 +8,7 @@ export default class GameModel {
   }
 
   getCurrentLevel() {
-    return getLevel(this._state);
+    return this._state.levels[this._state.level];
   }
 
   resetState() {
@@ -20,7 +20,7 @@ export default class GameModel {
   }
 
   tick() {
-    this._state = tick(this._state);
+    this._state.time -= 1;
   }
 
 
