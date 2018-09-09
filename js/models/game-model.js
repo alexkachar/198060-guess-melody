@@ -1,22 +1,37 @@
-import {levels} from "../data/data";
-import {setTimer} from "../data/timer";
+import {initialGameState} from './js/data/data.js';
+import {startTimer, stopTimer} from "../data/timer";
 
 export default class GameModel {
   constructor() {
-    this._initialState = {
-      level: 1,
-      notes: 3,
-      time: 200,
-      points: 0,
-      answers: [],
-      levels
-    }
-
-    this.timer = setTimer(this._initialState.time);
+    this.restart();
   }
 
   get state() {
-    return this._initialState;
+    return this._state;
   }
 
+  tick() {
+    startTimer(this._state);
+  }
+
+  stopTick() {
+    stopTimer();
+  }
+
+  outOfTries() {
+    this._state.notes = 3;
+  }
+
+  tryMissed() {
+    this._state.notes += 1;
+  }
+
+  outOfTime() {
+    this._state.time = 0;
+  }
+
+  restart() {
+    this._state = Object.assign({}, initialGameState);
+  }
 }
+

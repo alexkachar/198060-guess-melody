@@ -6,7 +6,7 @@ import {gameScreen} from "./game-screen";
 const MAX_QUESTIONS = 10;
 
 export const changeScreen = (state) => {
-  if (state.notes < 0) {
+  if (state.notes >= 3) {
     renderScreen(resultScreen(state));
   } else if (state.time < 0) {
     renderScreen(resultScreen(state));

@@ -20,50 +20,41 @@ export default class GamePresenter {
   constructor(model) {
     this.model = model;
     this.state = this.model.state;
-    this.level = this.state.levels[this.state.level];
-    this.header = new HeaderView(this.level);
-    this.content = new GameView[this.level.type](this.level);
+    this.levelType = this.model.state.levels[this.model.state.level].type;
+    this.header = new HeaderView(this.model.state);
+    this.content = new GameView[this.levelType](this.model.state);
 
     this.root = document.createElement(`section`);
-    this.root.classList.add(`game game--${this.model.state.level.type}`);
+    this.root.classList.add(`game game--${this.levelType}`);
     this.root.appendChild(this.header.element);
     this.root.appendChild(this.content.element);
   }
 
-  startGame() {
-    // this.changeLevel();
+  get element() {
+    return this.root;
   }
 
-  showWelcome() {}
+  onAnswerClick(userAnswers) {
+    let isCorrect = userAnswers;
+    if (this.levelType === `genre`) {
+      isCorrect = Array.from(userAnswers).every((element) => {
+        const checked = element.checked;
+        const correct = element.value === `true`;
 
-  answer(answer) {
-    // обработка ответа пользователя
+        return checked === correct;
+      });
+    }
+
+    let newState;
+    const answer = {isCorrect, time: 25};
+    if (isCorrect) {
+      newState = Object.assign({}, this.state, {level: this.state.level + 1, answers: this.state.answers.concat(answer)});
+    } else {
+      newState = Object.assign({}, this.state, {notes: this.state.notes - 1, level: this.state.level + 1, answers: this.state.answers.concat(answer)});
+    }
+    changeScreen(newState);
   }
 
-  fail(state) {
-    // проигрыш игрока
-  }
+  // return gameView.element;
 
-  updateContent() {}
-
-
-  updateHeader() {
-    const header = new HeaderView(this.model.state);
-    this.root.replaceChild(header.element, this.header.element);
-    this.header = header;
-  }
-
-  changeLevel() {
-    this.updateHeader();
-
-    const level = new GameView[this.level.type](this.model.level);
-    // level.onAnswer = this.answer.bind(this);
-    // this.changeContentView(level);
-    // level.focus();
-  }
-
-
-  restart() {
-    // возврат на экран приветствия
-  }
 }
