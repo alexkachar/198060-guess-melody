@@ -1,37 +1,35 @@
 import {initialGameState} from './js/data/data.js';
-import {startTimer, stopTimer} from "../data/timer";
+
+const getLevel = (state) => initialGameState[`${state.level}`];
 
 export default class GameModel {
   constructor() {
-    this.restart();
+    this.resetState();
   }
+
+  getCurrentLevel() {
+    return getLevel(this._state);
+  }
+
+  resetState() {
+    this._state = Object.assign({}, initialGameState);
+  }
+
+  hasNextLevel() {
+    return getLevel(this._state.level + 1) !== void 0;
+  }
+
+  tick() {
+    this._state = tick(this._state);
+  }
+
 
   get state() {
     return this._state;
   }
 
-  tick() {
-    startTimer(this._state);
-  }
+  answer(isCorrect) {}
 
-  stopTick() {
-    stopTimer();
-  }
-
-  outOfTries() {
-    this._state.notes = 3;
-  }
-
-  tryMissed() {
-    this._state.notes += 1;
-  }
-
-  outOfTime() {
-    this._state.time = 0;
-  }
-
-  restart() {
-    this._state = Object.assign({}, initialGameState);
-  }
 }
+
 
