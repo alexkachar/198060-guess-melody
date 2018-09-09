@@ -1,5 +1,7 @@
 import {renderScreen} from "../utils";
 import WelcomePresenter from "../presenters/welcome-presenter";
+import GamePresenter from "../presenters/game-presenter";
+import GameModel from "../models/game-model";
 
 export default class Application {
 
@@ -11,10 +13,13 @@ export default class Application {
   static showGameScreen() {
     const gameModel = new GameModel();
     const gamePresenter = new GamePresenter(gameModel);
-    // gamePage.showResults = Application.showResults;
-    gamePage.showWelcome = Application.showWelcomeScreen;
-    renderScreen(gamePage.element);
-    gamePage.startGame();
-    console.log(`show game screen`);
+    gamePresenter.showWelcome = Application.showWelcomeScreen;
+    // gamePresenter.showResults = Application.showResultsScreen;
+    renderScreen(GamePresenter.element);
+    gamePresenter.startGame();
+  }
+
+  static showResultsScreen() {
+
   }
 }

@@ -16,7 +16,7 @@ const GameView = {
   genre: GenreView
 };
 
-export default class GameScreenPresenter {
+export default class GamePresenter {
   constructor(model) {
     this.model = model;
     this.state = this.model.state;
@@ -34,6 +34,8 @@ export default class GameScreenPresenter {
     // this.changeLevel();
   }
 
+  showWelcome() {}
+
   answer(answer) {
     // обработка ответа пользователя
   }
@@ -42,9 +44,8 @@ export default class GameScreenPresenter {
     // проигрыш игрока
   }
 
-  updateContent() {
-    const content = new
-  }
+  updateContent() {}
+
 
   updateHeader() {
     const header = new HeaderView(this.model.state);
