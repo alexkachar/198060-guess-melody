@@ -39,7 +39,9 @@ export default class GamePresenter {
     const level = this.model.getCurrentLevel();
     const content = new GameView[this.levelType](level);
     content.onAnswerClick = this.onAnswerClick.bind(this);
+    const hasNextLevel = this.model.hasNextLevel();
     this.changeContentView(content);
+    // сделать проверку на наличие следующего уровня и выводить результаты, если нет уровня
   }
 
   startGame() {
@@ -60,12 +62,15 @@ export default class GamePresenter {
         return checked === correct;
       });
     }
-    this.model.answer(isCorrect);
-    // this.changeLevel();
 
+    this.model.answer(isCorrect);
+    this.changeLevel();
   }
 
-  changeContentView(view) {
+  changeContentView() {
+    const level = this.model.getCurrentLevel();
+    const view = new GameView[this.levelType](level);
+    view.onAnswerClick = this.onAnswerClick.bind(this);
     this.root.replaceChild(view.element, this.content.element);
     this.content = view;
   }

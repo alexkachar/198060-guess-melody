@@ -1,6 +1,15 @@
-import {initialGameState} from "./data/data";
+import {levels} from "./data/data";
 
-const getLevel = (state) => initialGameState[`${state.level}`];
+const MAX_QUESTIONS = 10;
+
+const initialGameState = Object.freeze({
+  level: 1,
+  notes: 0,
+  time: 300,
+  points: 0,
+  answers: [],
+  levels
+});
 
 export default class GameModel {
   constructor() {
@@ -16,7 +25,7 @@ export default class GameModel {
   }
 
   hasNextLevel() {
-    return getLevel(this._state.level + 1) !== void 0;
+    return this._state.notes > 0 && this._state.time > 0 && this._state.level < MAX_QUESTIONS;
   }
 
   tick() {
@@ -30,10 +39,10 @@ export default class GameModel {
 
   answer(isCorrect) {
     const answer = {isCorrect, time: this._state.time};
-    if (isCorrect) {
-      this._state = Object.assign({}, this._state, {level: this._state.level + 1, answers: this._state.answers.concat(answer)});
-    } else {
-      this._state = Object.assign({}, this._state, {notes: this._state.notes - 1, level: this._state.level + 1, answers: this._state.answers.concat(answer)});
+    this._state.answers.push(answer);
+    this._state.level += 1;
+    if (!isCorrect) {
+      this.state.notes += 1;
     }
   }
 }
