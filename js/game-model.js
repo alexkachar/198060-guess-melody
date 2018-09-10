@@ -29,7 +29,7 @@ export default class GameModel {
   }
 
   hasNextLevel() {
-    return this._state.notes > 0 && this._state.time > 0 && this._state.level < MAX_QUESTIONS;
+    return this._state.notes < 3 && this._state.time > 0 && this._state.level <= MAX_QUESTIONS;
   }
 
   tick() {

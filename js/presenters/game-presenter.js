@@ -27,14 +27,18 @@ export default class GamePresenter {
   }
 
   changeLevel() {
-    this.changeContentView();
-    // сделать проверку на наличие следующего уровня и выводить результаты, если нет уровня
+    const hasNextLevel = this.model.hasNextLevel();
+    console.log(hasNextLevel, `has next level`);
+    if (hasNextLevel) {
+      this.changeContentView();
+    } else {
+      alert(`игра окончена`);
+    }
   }
 
   changeContentView() {
     const level = this.model.getCurrentLevel();
     const levelType = this.model.getLevelType();
-    console.log(levelType);
     const view = new GameView[levelType](level);
     view.onAnswerClick = this.onAnswerClick.bind(this);
     this.root.replaceChild(view.element, this.content.element);
@@ -46,7 +50,7 @@ export default class GamePresenter {
 
     this._interval = setInterval(() => {
       this.model.tick();
-      this.updateHeader();
+      this.changeHeaderView();
     }, 1000);
   }
 
@@ -64,9 +68,7 @@ export default class GamePresenter {
     this.changeLevel();
   }
 
-  changeHeaderView() {}
-
-  updateHeader() {
+  changeHeaderView() {
     const header = new HeaderView(this.model.state);
     this.root.replaceChild(header.element, this.header.element);
     this.header = header;
