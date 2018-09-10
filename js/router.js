@@ -2,7 +2,6 @@ import {renderScreen} from "./utils";
 import WelcomePresenter from "./presenters/welcome-presenter";
 import GamePresenter from "./presenters/game-presenter";
 import GameModel from "./game-model";
-import {getElementFromTemplate} from "./utils";
 
 export default class Router {
 

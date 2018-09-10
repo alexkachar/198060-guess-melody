@@ -19,10 +19,10 @@ const GameView = {
 export default class GamePresenter {
   constructor(model) {
     this.model = model;
-    this.state = this.model.state;
-    this.levelType = this.model.state.levels[this.model.state.level].type;
-    this.header = new HeaderView(this.model.state);
-    this.content = new GameView[this.levelType](this.model.state);
+    this.state = this.model._state;
+    this.levelType = this.model._state.levels[this.model._state.level].type;
+    this.header = new HeaderView(this.model._state);
+    this.content = new GameView[this.levelType](this.model._state);
 
     this.root = document.createElement(`section`);
     this.root.classList.add(`game`);
@@ -36,12 +36,18 @@ export default class GamePresenter {
   }
 
   changeLevel() {
-    const level = this.model.getCurrentLevel();
-    const content = new GameView[this.levelType](level);
-    content.onAnswerClick = this.onAnswerClick.bind(this);
-    const hasNextLevel = this.model.hasNextLevel();
-    this.changeContentView(content);
+    this.changeContentView();
     // сделать проверку на наличие следующего уровня и выводить результаты, если нет уровня
+  }
+
+  changeContentView() {
+    const level = this.model.getCurrentLevel();
+    const levelType = this.model.getLevelType();
+    console.log(levelType);
+    const view = new GameView[levelType](level);
+    view.onAnswerClick = this.onAnswerClick.bind(this);
+    this.root.replaceChild(view.element, this.content.element);
+    this.content = view;
   }
 
   startGame() {
@@ -65,14 +71,6 @@ export default class GamePresenter {
 
     this.model.answer(isCorrect);
     this.changeLevel();
-  }
-
-  changeContentView() {
-    const level = this.model.getCurrentLevel();
-    const view = new GameView[this.levelType](level);
-    view.onAnswerClick = this.onAnswerClick.bind(this);
-    this.root.replaceChild(view.element, this.content.element);
-    this.content = view;
   }
 
   changeHeaderView() {}

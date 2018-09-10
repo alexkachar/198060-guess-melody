@@ -20,6 +20,10 @@ export default class GameModel {
     return this._state.levels[this._state.level];
   }
 
+  getLevelType() {
+    return this._state.levels[this._state.level].type;
+  }
+
   resetState() {
     this._state = Object.assign({}, initialGameState);
   }
