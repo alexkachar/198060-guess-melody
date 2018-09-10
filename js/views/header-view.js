@@ -1,13 +1,16 @@
 import AbstractView from "../views/abstract-view";
 
+const TIME_RED = `style="color: red;"`;
+
 export default class HeaderView extends AbstractView {
   constructor(state) {
     super();
     this.state = state;
+    this.time = this.state.time;
   }
 
   get getFormatedTime() {
-    const initTime = this.state.time;
+    const initTime = this.time;
     const minutes = Math.floor(initTime / 60);
     const seconds = initTime - minutes * 60;
     const time = {
@@ -22,7 +25,7 @@ export default class HeaderView extends AbstractView {
 
   get template() {
     const time = this.getFormatedTime;
-    const initTime = this.state.time;
+    const initTime = this.time;
     return `
       <header class="game__header">
         <a class="game__back" href="#">
@@ -35,9 +38,9 @@ export default class HeaderView extends AbstractView {
         </svg>
 
         <div class="timer__value" xmlns="http://www.w3.org/1999/xhtml">
-          <span ${initTime <= 30 ? `style="color: red;"` : ``}class="timer__mins">${time.minutes}</span>
-          <span ${initTime <= 30 ? `style="color: red;"` : ``}class="timer__dots">:</span>
-          <span ${initTime <= 30 ? `style="color: red;"` : ``} class="timer__secs">${time.seconds}</span>
+          <span ${initTime <= 30 ? TIME_RED : ``} class="timer__mins">${time.minutes}</span>
+          <span ${initTime <= 30 ? TIME_RED : ``} class="timer__dots">:</span>
+          <span ${initTime <= 30 ? TIME_RED : ``} class="timer__secs">${time.seconds}</span>
         </div>
 
         <div class="game__mistakes">
