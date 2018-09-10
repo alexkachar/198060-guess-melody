@@ -2,15 +2,6 @@ import GenreView from "../views/genre-view";
 import ArtistView from "../views/artist-view";
 import HeaderView from "../views/header-view";
 
-const Titles = {
-  JAZZ: `джазз`,
-  ROCK: `рок`,
-  COUNTRY: `кантри`,
-  RNB: `R&B`,
-  POP: `поп`,
-  ELECTRONIC: `электроник`
-};
-
 const GameView = {
   artist: ArtistView,
   genre: GenreView

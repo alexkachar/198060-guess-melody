@@ -1,5 +1,13 @@
 import AbstractView from "../views/abstract-view";
-import {Titles} from "../screens/game-screen";
+
+const Titles = {
+  JAZZ: `джазз`,
+  ROCK: `рок`,
+  COUNTRY: `кантри`,
+  RNB: `R&B`,
+  POP: `поп`,
+  ELECTRONIC: `электроник`
+};
 
 export default class genreView extends AbstractView {
   constructor(level) {
