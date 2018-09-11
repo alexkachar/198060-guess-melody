@@ -32,4 +32,11 @@ export default class ResultsView extends AbstractView {
         <button class="result__replay" type="button">${this.button}</button>
       </section>`;
   }
+
+  bind(element) {
+    const replayButton = element.querySelector(`.result__replay`);
+    replayButton.addEventListener(`click`, this.onReplayClick);
+  }
+
+  onReplayClick() {}
 }

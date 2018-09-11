@@ -16,6 +16,7 @@ export default class GamePresenter {
     this.header = new HeaderView(this.model._state);
     this.content = new GameView[this.levelType](this.model._state);
 
+    this._interval = null;
     this.root = document.createElement(`section`);
     this.root.classList.add(`game`);
     this.root.classList.add(`game--${this.levelType}`);
@@ -33,6 +34,8 @@ export default class GamePresenter {
       this.changeContentView();
     } else {
       Router.showResultsScreen(this.model);
+      clearInterval(this._interval);
+      this.model.resetState();
     }
   }
 
@@ -49,9 +52,23 @@ export default class GamePresenter {
     this.changeLevel();
 
     this._interval = setInterval(() => {
-      this.model.tick();
-      this.changeHeaderView();
+      const hasNextLevel = this.model.hasNextLevel();
+      if (hasNextLevel) {
+        this.model.tick();
+        this.changeHeaderView();
+      } else {
+        this.changeLevel();
+      }
     }, 1000);
+  }
+
+  tick() {
+    const hasNextLevel = this.model.hasNextLevel();
+    if (hasNextLevel) {
+      this._state.time -= 1;
+    } else {
+      Router.showResultsScreen(this.model);
+    }
   }
 
   onAnswerClick(userAnswers) {

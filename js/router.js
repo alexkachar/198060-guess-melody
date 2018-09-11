@@ -21,7 +21,7 @@ export default class Router {
   }
 
   static showResultsScreen(model) {
-    const resultsPresenter = new ResultsPresenter(model);
+    const resultsPresenter = new ResultsPresenter(model, Router.showGameScreen);
     renderScreen(resultsPresenter.element);
   }
 }
