@@ -15,7 +15,7 @@ const Buttons = {
 export default class ResultsView extends AbstractView {
   constructor(state) {
     super();
-    this.isFailed = (state.notes <= 0);
+    this.isFailed = (state.notes >= 3);
     this.result = getTotal(state);
     this.title = this.isFailed ? Titles.FAIL_TRIES : Titles.WIN;
     this.button = this.isFailed ? Buttons.FAIL : Buttons.WIN;

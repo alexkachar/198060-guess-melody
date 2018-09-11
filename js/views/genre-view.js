@@ -1,6 +1,13 @@
 import AbstractView from "../views/abstract-view";
-import {headerTemplate} from "../templates/header-template";
-import {Titles} from "../screens/game-screen";
+
+const Titles = {
+  JAZZ: `джазз`,
+  ROCK: `рок`,
+  COUNTRY: `кантри`,
+  RNB: `R&B`,
+  POP: `поп`,
+  ELECTRONIC: `электроник`
+};
 
 export default class genreView extends AbstractView {
   constructor(level) {
@@ -10,10 +17,7 @@ export default class genreView extends AbstractView {
   }
 
   get template() {
-    return `
-      <section class="game game--genre">
-        ${headerTemplate}
-        <section class="game__screen">
+    return `<section class="game__screen">
           <h2 class="game__title">Выберите все треки в стиле ${this.Titles[this.level.genre]}</h2>
           <form class="game__tracks">              
             ${this.level.answers.map((answer, index) => `
@@ -30,14 +34,10 @@ export default class genreView extends AbstractView {
               </div>`).join(``)};
             <button class="game__submit button" type="submit">Ответить</button>
           </form>   
-        </section>
-      </section>`;
+        </section>`;
   }
 
   bind(element) {
-    const backButton = element.querySelector(`.game__back`);
-    backButton.addEventListener(`click`, this.onBackButtonClick);
-
     const audio = Array.from(element.querySelectorAll(`audio`));
     const playerButtons = Array.from(element.querySelectorAll(`.track__button`));
     playerButtons[0].classList.add(`track__button--pause`);
@@ -79,8 +79,6 @@ export default class genreView extends AbstractView {
       submitButton.disabled = true;
     });
   }
-
-  onBackButtonClick() {}
 
   onAnswerClick() {}
 }

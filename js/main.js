@@ -1,5 +1,3 @@
-import {welcomeScreen} from './screens/welcome-screen';
-import {renderScreen} from "./utils";
+import Router from "./router";
 
-renderScreen(welcomeScreen.element);
-
+Router.showWelcomeScreen();
