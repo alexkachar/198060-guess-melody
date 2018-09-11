@@ -15,7 +15,7 @@ export default class Router {
     const gameModel = new GameModel();
     const gamePresenter = new GamePresenter(gameModel);
     gamePresenter.showWelcome = Router.showWelcomeScreen;
-    gamePresenter.showResults = Router.showResultsScreen(gameModel);
+    gamePresenter.showResults = Router.showResultsScreen;
     renderScreen(gamePresenter.element);
     gamePresenter.startGame();
   }

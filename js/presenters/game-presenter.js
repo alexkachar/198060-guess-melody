@@ -1,6 +1,7 @@
 import GenreView from "../views/genre-view";
 import ArtistView from "../views/artist-view";
 import HeaderView from "../views/header-view";
+import Router from "../router";
 
 const GameView = {
   artist: ArtistView,
@@ -28,11 +29,10 @@ export default class GamePresenter {
 
   changeLevel() {
     const hasNextLevel = this.model.hasNextLevel();
-    console.log(hasNextLevel, `has next level`);
     if (hasNextLevel) {
       this.changeContentView();
     } else {
-      alert(`игра окончена`);
+      Router.showResultsScreen(this.model);
     }
   }
 
