@@ -7,6 +7,7 @@ const initialGameState = Object.freeze({
   notes: 0,
   time: 300,
   points: 0,
+  fastPoints: 0,
   timeline: [],
   answers: [],
   levels
@@ -43,20 +44,31 @@ export default class GameModel {
 
   answer(isCorrect) {
     let timeline = this._state.timeline;
+    let answer;
+
     if (this._state.answers.length === 0) {
-      const answer = {isCorrect, time: initialGameState.time - this._state.time};
-      timeline.push(this._state.time);
-      this._state.answers.push(answer);
+      answer = {isCorrect, time: initialGameState.time - this._state.time};
     } else {
-      const answer = {isCorrect, time: timeline[timeline.length - 1] - this._state.time};
-      timeline.push(this._state.time);
-      this._state.answers.push(answer);
+      answer = {isCorrect, time: timeline[timeline.length - 1] - this._state.time};
     }
+
+    if (isCorrect && answer.time < 30) {
+      this._state.points = this._state.points + 2;
+      this._state.fastPoints++;
+    } else if (isCorrect && answer.time >= 30) {
+      this._state.points++;
+    } else if (!isCorrect) {
+      this._state.points = this._state.points - 2;
+    }
+
+    this._state.answers.push(answer);
+    timeline.push(this._state.time);
     this._state.level += 1;
     if (!isCorrect) {
       this.state.notes += 1;
     }
   }
-}
+};
+
 
 

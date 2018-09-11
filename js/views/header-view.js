@@ -1,4 +1,5 @@
 import AbstractView from "../views/abstract-view";
+import {getFormatedTime} from "../utils";
 
 const TIME_RED = `style="color: red;"`;
 
@@ -9,24 +10,8 @@ export default class HeaderView extends AbstractView {
     this.time = this.state.time;
   }
 
-  get getFormatedTime() {
-    const initTime = this.time;
-    const minutes = Math.floor(initTime / 60);
-    const seconds = initTime - minutes * 60;
-    const time = {
-      minutes,
-      seconds
-    };
-
-    if (time.seconds < 10) {
-      time.seconds = `0` + time.seconds;
-    }
-
-    return time;
-  }
-
   get template() {
-    const time = this.getFormatedTime;
+    const time = getFormatedTime(this.time);
     const initTime = this.time;
     return `
       <header class="game__header">
