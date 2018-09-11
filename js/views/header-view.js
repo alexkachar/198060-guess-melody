@@ -16,10 +16,12 @@ export default class HeaderView extends AbstractView {
     const time = {
       minutes,
       seconds
+    };
+
+    if (time.seconds < 10) {
+      time.seconds = `0` + time.seconds;
     }
-    if (time.seconds === 0) {
-      time.seconds = `00`;
-    }
+
     return time;
   }
 
