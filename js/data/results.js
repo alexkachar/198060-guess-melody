@@ -26,7 +26,7 @@ const getTotal = (state) => {
     return Results.FAIL_TIME;
   }
 
-  if (state.notes === 0) {
+  if (state.notes >= 3) {
     return Results.FAIL_TRIES;
   }
 

@@ -52,8 +52,6 @@ export default class GameModel {
       timeline.push(this._state.time);
       this._state.answers.push(answer);
     }
-    console.log(timeline);
-    console.log(this._state.answers);
     this._state.level += 1;
     if (!isCorrect) {
       this.state.notes += 1;
