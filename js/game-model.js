@@ -14,8 +14,9 @@ const initialGameState = Object.freeze({
 });
 
 export default class GameModel {
-  constructor() {
-    this.resetState();
+  constructor(data) {
+    this.resetState()
+    this.data = data;
   }
 
   getCurrentLevel() {
