@@ -9,10 +9,10 @@ export default class ArtistView extends AbstractView {
   get template() {
     return `
         <section class="game__screen">
-          <h2 class="game__title">Кто исполняет эту песню?</h2>
+          <h2 class="game__title">${this.level.question}</h2>
           <div class="game__track">
             <button class="track__button track__button--play" type="button"></button>
-            <audio src ="${this.level.audio}" autoplay></audio>
+            <audio src ="${this.level.src}" autoplay></audio>
           </div>
             <form class="game__artist">
               ${this.level.answers.map((answer, index) => `

@@ -1,24 +1,14 @@
 import AbstractView from "../views/abstract-view";
 
-const Titles = {
-  JAZZ: `джазз`,
-  ROCK: `рок`,
-  COUNTRY: `кантри`,
-  RNB: `R&B`,
-  POP: `поп`,
-  ELECTRONIC: `электроник`
-};
-
 export default class genreView extends AbstractView {
   constructor(level) {
     super();
     this.level = level;
-    this.Titles = Titles;
   }
 
   get template() {
     return `<section class="game__screen">
-          <h2 class="game__title">Выберите все треки в стиле ${this.Titles[this.level.genre]}</h2>
+          <h2 class="game__title">${this.level.question}</h2>
           <form class="game__tracks">              
             ${this.level.answers.map((answer, index) => `
               <div class="track">
