@@ -1,9 +1,10 @@
 import AbstractView from "../views/abstract-view";
 
+const RULES = [`За 5 минут нужно ответить на все вопросы.`, `Можно допустить 3 ошибки.`];
+
 export default class WelcomeView extends AbstractView {
-  constructor(rules) {
+  constructor() {
     super();
-    this.rules = rules;
   }
 
   get template() {
@@ -22,7 +23,7 @@ export default class WelcomeView extends AbstractView {
   }
 
   get getRulesTemplate() {
-    return this.rules.map((it) => `<li>${it}</li>`).join(``);
+    return RULES.map((it) => `<li>${it}</li>`).join(``);
   }
 
   bind(element) {

@@ -1,10 +1,10 @@
 import {renderScreen} from "./utils";
 import GameModel from "./game-model";
-import WelcomePresenter from "./presenters/welcome-presenter";
 import GamePresenter from "./presenters/game-presenter";
 import ResultsPresenter from "./presenters/results-presenter";
 import ErrorView from "./views/error-view";
 import {adaptServerData} from "./data/data-adaptor.js";
+import WelcomeView from "./views/welcome-view";
 
 const checkStatus = (response) => {
   if (response.status >= 200 && response.status < 300) {
@@ -28,8 +28,9 @@ export default class Router {
   }
 
   static showWelcomeScreen() {
-    const welcomePresenter = new WelcomePresenter(Router.showGameScreen);
-    renderScreen(welcomePresenter.element);
+    const welcomeView = new WelcomeView();
+    welcomeView.onWelcomeButtonClick = Router.showGameScreen;
+    renderScreen(welcomeView.element);
   }
 
   static showGameScreen() {
