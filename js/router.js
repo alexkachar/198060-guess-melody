@@ -1,7 +1,7 @@
 import {renderScreen} from "./utils";
 import GameModel from "./game-model";
 import GamePresenter from "./presenters/game-presenter";
-import ResultsPresenter from "./presenters/results-presenter";
+import ResultsView from "./views/results-view";
 import ErrorView from "./views/error-view";
 import {adaptServerData} from "./data/data-adaptor.js";
 import WelcomeView from "./views/welcome-view";
@@ -43,8 +43,9 @@ export default class Router {
   }
 
   static showResultsScreen(model) {
-    const resultsPresenter = new ResultsPresenter(model, Router.showGameScreen);
-    renderScreen(resultsPresenter.element);
+    const resultsView = new ResultsView(model);
+    resultsView.onReplayClick = Router.showGameScreen;
+    renderScreen(resultsView.element);
   }
 
   static showErrorScreen(error) {
