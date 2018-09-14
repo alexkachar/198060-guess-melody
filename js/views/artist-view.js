@@ -12,7 +12,7 @@ export default class ArtistView extends AbstractView {
           <h2 class="game__title">${this.level.question}</h2>
           <div class="game__track">
             <button class="track__button track__button--play" type="button"></button>
-            <audio src ="${this.level.src}" autoplay></audio>
+            <audio src ="${this.level.audio}" autoplay></audio>
           </div>
             <form class="game__artist">
               ${this.level.answers.map((answer, index) => `
