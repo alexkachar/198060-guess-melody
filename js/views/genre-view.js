@@ -14,7 +14,7 @@ export default class genreView extends AbstractView {
               <div class="track">
                 <button class="track__button track__button--play" type="button"></button>
                 <div class="track__status">
-                  <audio src ="${answer.audio}" ${answer.autoplay ? `autoplay` : ``}></audio>
+                  <audio src ="${answer.src}"}></audio>
                 </div>
 
                 <div class="game__answer">

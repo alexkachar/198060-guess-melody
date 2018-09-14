@@ -1,14 +1,19 @@
-const preprocessAnswers = (answers) => answers.map((answer) => {
-  const [action, title] = answer.action.split(`.`);
-  return {
-    action,
-    title
-  };
-});
-
 export const adaptServerData = (questions) => {
   for (const level of Object.values(questions)) {
-    level.answers = preprocessAnswers(level.answers);
+    if (level.type === `artist`) {
+      level.answers.forEach((answer) => {
+        answer.img = answer.image.url;
+        delete answer.image;
+        answer.artist = answer.title;
+        delete answer.title;
+        answer.correct = answer.isCorrect;
+        delete answer.isCorrect;
+      });
+    } else {
+      level.answers.forEach((answer) => {
+        answer.correct = answer.genre === level.genre;
+      });
+    }
   }
-  return data;
+  return questions;
 };

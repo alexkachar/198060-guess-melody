@@ -4,6 +4,7 @@ import WelcomePresenter from "./presenters/welcome-presenter";
 import GamePresenter from "./presenters/game-presenter";
 import ResultsPresenter from "./presenters/results-presenter";
 import ErrorPresenter from "./presenters/error-presenter";
+import {adaptServerData} from "./data/data-adaptor.js";
 
 const checkStatus = (response) => {
   if (response.status >= 200 && response.status < 300) {
@@ -21,7 +22,7 @@ export default class Router {
     window.fetch(`https://es.dump.academy/guess-melody/questions`).
       then(checkStatus).
       then((response) => response.json()).
-      then((data) => questions = data).
+      then((data) => questions = adaptServerData(data)).
       then((response) => Router.showWelcomeScreen()).
       catch(Router.showErrorScreen);
   }

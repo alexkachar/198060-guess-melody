@@ -1,4 +1,6 @@
 import {assert} from 'chai';
+import {adaptServerData} from "./data-adaptor";
+import {getStats, rivalsMock} from "./results";
 
 // Входной формат данных:
 
@@ -123,11 +125,7 @@ const localData = [
 ];
 
 describe(`Adapt server data`, () => {
-
-  it(`should have several format remote and local data`, () => {
-    assert.deepEqual(localData, serverData);
+  it(`If the player wins, the returned message is correct`, () => {
+    assert.equal(adaptServerData(serverData)[0].answers[0], localData[0].answers[0]);
   });
-
 });
-
-mocha.run();
