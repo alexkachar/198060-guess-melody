@@ -1,6 +1,6 @@
-import AbstractView from '../views/abstract-view';
+import AbstractView from './abstract-view';
 
-export default class ErrorPresenter extends AbstractView {
+export default class ErrorView extends AbstractView {
   constructor(error) {
     super();
     this._error = error;

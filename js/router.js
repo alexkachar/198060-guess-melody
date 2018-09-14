@@ -3,7 +3,7 @@ import GameModel from "./game-model";
 import WelcomePresenter from "./presenters/welcome-presenter";
 import GamePresenter from "./presenters/game-presenter";
 import ResultsPresenter from "./presenters/results-presenter";
-import ErrorPresenter from "./presenters/error-presenter";
+import ErrorView from "./views/error-view";
 import {adaptServerData} from "./data/data-adaptor.js";
 
 const checkStatus = (response) => {
@@ -47,7 +47,7 @@ export default class Router {
   }
 
   static showErrorScreen(error) {
-    const errorPresenter = new ErrorPresenter(error);
-    renderScreen(errorPresenter.element);
+    const errorView = new ErrorView(error);
+    renderScreen(errorView.element);
   }
 }
