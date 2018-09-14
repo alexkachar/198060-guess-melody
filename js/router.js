@@ -5,14 +5,7 @@ import ResultsView from "./views/results-view";
 import ErrorView from "./views/error-view";
 import {adaptServerData} from "./data/data-adaptor.js";
 import WelcomeView from "./views/welcome-view";
-
-const checkStatus = (response) => {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  } else {
-    throw new Error(`${response.status}: ${response.statusText}`);
-  }
-};
+import {checkStatus} from "./utils";
 
 let questions = [];
 
@@ -22,8 +15,10 @@ export default class Router {
     window.fetch(`https://es.dump.academy/guess-melody/questions`).
       then(checkStatus).
       then((response) => response.json()).
-      then((data) => questions = adaptServerData(data)).
-      then((response) => Router.showWelcomeScreen()).
+      then((data) => {
+        questions = adaptServerData(data);
+      }).
+      then(Router.showWelcomeScreen).
       catch(Router.showErrorScreen);
   }
 
