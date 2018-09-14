@@ -13,7 +13,7 @@ const checkStatus = (response) => {
   }
 };
 
-let gameData = [];
+let questions = [];
 
 export default class Router {
 
@@ -21,7 +21,7 @@ export default class Router {
     window.fetch(`https://es.dump.academy/guess-melody/questions`).
       then(checkStatus).
       then((response) => response.json()).
-      then((data) => gameData = data).
+      then((data) => questions = data).
       then((response) => Router.showWelcomeScreen()).
       catch(Router.showErrorScreen);
   }
@@ -32,7 +32,7 @@ export default class Router {
   }
 
   static showGameScreen() {
-    const gameModel = new GameModel(gameData);
+    const gameModel = new GameModel(questions);
     const gamePresenter = new GamePresenter(gameModel);
     gamePresenter.showWelcome = Router.showWelcomeScreen;
     gamePresenter.showResults = Router.showResultsScreen;
