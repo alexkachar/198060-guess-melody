@@ -1,18 +1,40 @@
 import {renderScreen} from "./utils";
-import WelcomePresenter from "./presenters/welcome-presenter";
-import GamePresenter from "./presenters/game-presenter";
 import GameModel from "./game-model";
-import ResultsPresenter from "./presenters/results-presenter";
+import GamePresenter from "./presenters/game-presenter";
+import ResultsView from "./views/results-view";
+import ErrorView from "./views/error-view";
+import {adaptServerData} from "./data/data-adaptor.js";
+import WelcomeView from "./views/welcome-view";
+
+const checkStatus = (response) => {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  } else {
+    throw new Error(`${response.status}: ${response.statusText}`);
+  }
+};
+
+let questions = [];
 
 export default class Router {
 
+  static start() {
+    window.fetch(`https://es.dump.academy/guess-melody/questions`).
+      then(checkStatus).
+      then((response) => response.json()).
+      then((data) => questions = adaptServerData(data)).
+      then((response) => Router.showWelcomeScreen()).
+      catch(Router.showErrorScreen);
+  }
+
   static showWelcomeScreen() {
-    const welcomePresenter = new WelcomePresenter(Router.showGameScreen);
-    renderScreen(welcomePresenter.element);
+    const welcomeView = new WelcomeView();
+    welcomeView.onWelcomeButtonClick = Router.showGameScreen;
+    renderScreen(welcomeView.element);
   }
 
   static showGameScreen() {
-    const gameModel = new GameModel();
+    const gameModel = new GameModel(questions);
     const gamePresenter = new GamePresenter(gameModel);
     gamePresenter.showWelcome = Router.showWelcomeScreen;
     gamePresenter.showResults = Router.showResultsScreen;
@@ -21,7 +43,13 @@ export default class Router {
   }
 
   static showResultsScreen(model) {
-    const resultsPresenter = new ResultsPresenter(model);
-    renderScreen(resultsPresenter.element);
+    const resultsView = new ResultsView(model);
+    resultsView.onReplayClick = Router.showGameScreen;
+    renderScreen(resultsView.element);
+  }
+
+  static showErrorScreen(error) {
+    const errorView = new ErrorView(error);
+    renderScreen(errorView.element);
   }
 }

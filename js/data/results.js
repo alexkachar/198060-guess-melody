@@ -33,20 +33,6 @@ const getTotal = (state) => {
     return FailedResults.FAIL_TRIES;
   }
 
-  // const answers = state.answers;
-  // let points = 0;
-  // let fastPoints = 0;
-  // for (let i = 0; i < answers.length; i++) {
-  //   if (answers[i].isCorrect === true && answers[i].time < FAST_ANSWER_TIME) {
-  //     points += 2;
-  //     fastPoints = fastPoints + 1;
-  //   } else if (answers[i].isCorrect === true && answers[i].time > FAST_ANSWER_TIME) {
-  //     points = points + 1;
-  //   } else {
-  //     points = points - 1;
-  //   }
-  // }
-
   const playerTime = getFormatedTime(300 - state.time);
 
   const winResult = `За ${playerTime.minutes} минуты и ${playerTime.seconds} секунд вы набрали ${state.points} баллов (${state.fastPoints} быстрых), совершив ${state.notes} ошибки`

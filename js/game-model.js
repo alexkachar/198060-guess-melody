@@ -1,21 +1,20 @@
-import {levels} from "./data/data";
-
 const MAX_QUESTIONS = 10;
 
 const initialGameState = Object.freeze({
-  level: 1,
+  level: 0,
   notes: 0,
   time: 300,
   points: 0,
   fastPoints: 0,
   timeline: [],
   answers: [],
-  levels
+  levels: []
 });
 
 export default class GameModel {
-  constructor() {
-    this.resetState();
+  constructor(questions) {
+    this.resetState()
+    this._state.levels = questions;
   }
 
   getCurrentLevel() {
@@ -31,7 +30,7 @@ export default class GameModel {
   }
 
   hasNextLevel() {
-    return this._state.notes < 3 && this._state.time > 0 && this._state.level <= MAX_QUESTIONS;
+    return this._state.notes < 3 && this._state.time > 0 && this._state.level < MAX_QUESTIONS;
   }
 
   tick() {
@@ -68,7 +67,6 @@ export default class GameModel {
       this.state.notes += 1;
     }
   }
-};
-
+}
 
 

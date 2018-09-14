@@ -1,11 +1,5 @@
 const mainElement = document.querySelector(`.main`);
 
-export const getElementFromTemplate = (template) => {
-  const wrapper = document.createElement(`div`);
-  wrapper.innerHTML = template.trim();
-  return wrapper.children[0];
-};
-
 export const renderScreen = (gameScreen) => {
   mainElement.innerHTML = ``;
   mainElement.appendChild(gameScreen);
