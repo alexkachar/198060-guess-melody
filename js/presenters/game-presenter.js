@@ -1,20 +1,23 @@
 import GenreView from "../views/genre-view";
 import ArtistView from "../views/artist-view";
 import HeaderView from "../views/header-view";
-import Router from "../router";
+
+const LevelTypes = {
+  ARTIST: `artist`,
+  GENRE: `genre`
+}
 
 const GameView = {
-  artist: ArtistView,
-  genre: GenreView
+  [LevelTypes.ARTIST]: ArtistView,
+  [LevelTypes.GENRE]: GenreView
 };
 
 export default class GamePresenter {
   constructor(model) {
     this.model = model;
-    this.state = this.model._state;
     this.levelType = this.model._state.levels[this.model._state.level].type;
     this.header = new HeaderView(this.model._state);
-    this.content = new GameView[this.levelType](this.model._state);
+    this.content = new GameView[this.levelType](this.model.getCurrentLevel());
 
     this._interval = null;
     this.root = document.createElement(`section`);
@@ -33,9 +36,8 @@ export default class GamePresenter {
     if (hasNextLevel) {
       this.changeContentView();
     } else {
-      Router.showResultsScreen(this.model);
       clearInterval(this._interval);
-      this.model.resetState();
+      this.showResults(this.model);
     }
   }
 
@@ -49,8 +51,8 @@ export default class GamePresenter {
   }
 
   startGame() {
+    this.model.resetState();
     this.changeLevel();
-
     this._interval = setInterval(() => {
       const hasNextLevel = this.model.hasNextLevel();
       if (hasNextLevel) {
@@ -60,15 +62,6 @@ export default class GamePresenter {
         this.changeLevel();
       }
     }, 1000);
-  }
-
-  tick() {
-    const hasNextLevel = this.model.hasNextLevel();
-    if (hasNextLevel) {
-      this._state.time -= 1;
-    } else {
-      Router.showResultsScreen(this.model);
-    }
   }
 
   onAnswerClick(userAnswers) {
@@ -89,5 +82,6 @@ export default class GamePresenter {
     const header = new HeaderView(this.model.state);
     this.root.replaceChild(header.element, this.header.element);
     this.header = header;
+    header.onBackButtonClick = () => this.showWelcome();
   }
 }

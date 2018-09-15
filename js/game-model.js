@@ -1,4 +1,6 @@
 const MAX_QUESTIONS = 10;
+const MAX_NOTES = 3;
+const FAST_ANSWER_TIME = 30;
 
 const initialGameState = Object.freeze({
   level: 0,
@@ -13,8 +15,8 @@ const initialGameState = Object.freeze({
 
 export default class GameModel {
   constructor(questions) {
-    this.resetState()
-    this._state.levels = questions;
+    this.questions = questions;
+    this.resetState();
   }
 
   getCurrentLevel() {
@@ -26,11 +28,11 @@ export default class GameModel {
   }
 
   resetState() {
-    this._state = Object.assign({}, initialGameState);
+    this._state = Object.assign({}, initialGameState, {levels: this.questions});
   }
 
   hasNextLevel() {
-    return this._state.notes < 3 && this._state.time > 0 && this._state.level < MAX_QUESTIONS;
+    return this._state.notes < MAX_NOTES && this._state.time > 0 && this._state.level < MAX_QUESTIONS;
   }
 
   tick() {
@@ -38,7 +40,7 @@ export default class GameModel {
   }
 
   get state() {
-    return this._state;
+    return Object.assign({}, this._state);
   }
 
   answer(isCorrect) {
@@ -51,10 +53,10 @@ export default class GameModel {
       answer = {isCorrect, time: timeline[timeline.length - 1] - this._state.time};
     }
 
-    if (isCorrect && answer.time < 30) {
+    if (isCorrect && answer.time < FAST_ANSWER_TIME) {
       this._state.points = this._state.points + 2;
-      this._state.fastPoints++;
-    } else if (isCorrect && answer.time >= 30) {
+      this._state.fastPoints = this._state.fastPoints + 2;
+    } else if (isCorrect && answer.time >= FAST_ANSWER_TIME) {
       this._state.points++;
     } else if (!isCorrect) {
       this._state.points = this._state.points - 2;
@@ -68,5 +70,3 @@ export default class GameModel {
     }
   }
 }
-
-

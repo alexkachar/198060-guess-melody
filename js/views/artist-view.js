@@ -42,7 +42,8 @@ export default class ArtistView extends AbstractView {
 
     const artistButtons = element.querySelectorAll(`.artist`);
     artistButtons.forEach((button) => {
-      button.addEventListener(`click`, () => {
+      button.addEventListener(`click`, (evt) => {
+        evt.preventDefault();
         const isCorrect = button.querySelector(`input`).value === `true`;
         this.onAnswerClick(isCorrect);
       });

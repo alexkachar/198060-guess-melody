@@ -19,6 +19,5 @@ export const adaptServerData = (questions) => {
       });
     }
   }
-  console.log(questions);
   return questions;
 };
