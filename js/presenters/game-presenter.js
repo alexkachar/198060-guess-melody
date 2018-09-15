@@ -5,7 +5,7 @@ import HeaderView from "../views/header-view";
 const LevelTypes = {
   ARTIST: `artist`,
   GENRE: `genre`
-}
+};
 
 const GameView = {
   [LevelTypes.ARTIST]: ArtistView,
