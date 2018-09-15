@@ -64,7 +64,7 @@ export default class GameModel {
     timeline.push(this._state.time);
     this._state.level += 1;
     if (!isCorrect) {
-      this.state.notes += 1;
+      this._state.notes += 1;
     }
   }
 }
