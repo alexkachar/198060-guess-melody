@@ -36,6 +36,6 @@ const getTotal = (state) => {
   const winResult = `За ${playerTime.minutes} минуты и ${playerTime.seconds} секунд вы набрали ${state.points} баллов (${state.fastPoints} быстрых), совершив ${state.notes} ошибки`
 
   return winResult;
-}
+};
 
 export {getStats, getTotal};
