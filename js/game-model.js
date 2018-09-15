@@ -3,7 +3,7 @@ const MAX_QUESTIONS = 10;
 const initialGameState = Object.freeze({
   level: 0,
   notes: 0,
-  time: 10,
+  time: 300,
   points: 40,
   fastPoints: 0,
   timeline: [],
