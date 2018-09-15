@@ -5,21 +5,19 @@ import ResultsView from "./views/results-view";
 import ErrorView from "./views/error-view";
 import {adaptServerData} from "./data/data-adaptor.js";
 import WelcomeView from "./views/welcome-view";
-import {checkStatus} from "./utils";
+import Loader from "./loader";
 
 let questions = [];
 
 export default class Router {
 
   static start() {
-    window.fetch(`https://es.dump.academy/guess-melody/questions`).
-      then(checkStatus).
-      then((response) => response.json()).
-      then((data) => {
+    Loader.loadQuestions()
+      .then((data) => {
         questions = adaptServerData(data);
-      }).
-      then(Router.showWelcomeScreen).
-      catch(Router.showErrorScreen);
+      })
+      .then(Router.showWelcomeScreen)
+      .catch(Router.showErrorScreen);
   }
 
   static showWelcomeScreen() {
