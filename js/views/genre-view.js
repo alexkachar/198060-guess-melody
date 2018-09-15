@@ -12,7 +12,7 @@ export default class genreView extends AbstractView {
           <form class="game__tracks">              
             ${this.level.answers.map((answer, index) => `
               <div class="track">
-                <button class="track__button ${index === 0 ? `track__button--pause` : `track__button--play`}" type="button"></button>
+                <button class="track__button track__button--play ${index === 0 ? `track__button--pause` : ``}" type="button"></button>
                 <div class="track__status">
                   <audio src ="${answer.audio}" ${index === 0 ? `autoplay` : ``}></audio>
                 </div>

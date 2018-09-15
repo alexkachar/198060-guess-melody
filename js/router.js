@@ -1,30 +1,23 @@
 import {renderScreen} from "./utils";
 import GameModel from "./game-model";
 import GamePresenter from "./presenters/game-presenter";
-import ResultsView from "./views/results-view";
 import ErrorView from "./views/error-view";
 import {adaptServerData} from "./data/data-adaptor.js";
 import WelcomeView from "./views/welcome-view";
-
-const checkStatus = (response) => {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  } else {
-    throw new Error(`${response.status}: ${response.statusText}`);
-  }
-};
+import Loader from "./loader";
+import ResultsPresenter from "./presenters/results-presenter";
 
 let questions = [];
 
 export default class Router {
 
   static start() {
-    window.fetch(`https://es.dump.academy/guess-melody/questions`).
-      then(checkStatus).
-      then((response) => response.json()).
-      then((data) => questions = adaptServerData(data)).
-      then((response) => Router.showWelcomeScreen()).
-      catch(Router.showErrorScreen);
+    Loader.loadQuestions()
+      .then((data) => {
+        questions = adaptServerData(data);
+      })
+      .then(Router.showWelcomeScreen)
+      .catch(Router.showErrorScreen);
   }
 
   static showWelcomeScreen() {
@@ -38,14 +31,13 @@ export default class Router {
     const gamePresenter = new GamePresenter(gameModel);
     gamePresenter.showWelcome = Router.showWelcomeScreen;
     gamePresenter.showResults = Router.showResultsScreen;
-    renderScreen(gamePresenter.element);
     gamePresenter.startGame();
+    renderScreen(gamePresenter.element);
   }
 
   static showResultsScreen(model) {
-    const resultsView = new ResultsView(model);
-    resultsView.onReplayClick = Router.showGameScreen;
-    renderScreen(resultsView.element);
+    const resultsPresenter = new ResultsPresenter(model, Router.showGameScreen);
+    resultsPresenter.load();
   }
 
   static showErrorScreen(error) {
