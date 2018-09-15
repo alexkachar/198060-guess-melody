@@ -4,7 +4,7 @@ const initialGameState = Object.freeze({
   level: 0,
   notes: 0,
   time: 300,
-  points: 40,
+  points: 0,
   fastPoints: 0,
   timeline: [],
   answers: [],
@@ -68,5 +68,3 @@ export default class GameModel {
     }
   }
 }
-
-
