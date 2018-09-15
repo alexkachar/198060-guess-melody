@@ -1,14 +1,11 @@
 import {getFormatedTime} from "../utils";
 
-const FAST_ANSWER_TIME = 30;
-
 const FailedResults = {
   FAIL_TIME: `Время вышло! Вы не успели отгадать все мелодии`,
   FAIL_TRIES: `У вас закончились все попытки. Ничего, повезёт в следующий раз!`
 };
 
 const getStats = (rivals, playerStats) => {
-
   const stats = [];
 
   rivals.forEach((it) => {
@@ -19,7 +16,7 @@ const getStats = (rivals, playerStats) => {
   stats.sort((left, right) => right - left);
 
   const playerPosition = stats.indexOf(playerStats.points) + 1;
-  const percent = (stats.length - playerPosition) * 100 / stats.length;
+  const percent = Math.round((stats.length - playerPosition) * 100 / stats.length);
 
   return `Вы заняли ${playerPosition} место из ${stats.length} игроков. Это лучше, чем у ${percent}% игроков`;
 };
@@ -40,11 +37,4 @@ const getTotal = (state) => {
   return winResult;
 }
 
-const rivalsMock = [
-  {isWinner: true, notes: 0, time: 130, points: 19},
-  {isWinner: true, notes: 1, time: 200, points: 18},
-  {isWinner: true, notes: 1, time: 180, points: 12},
-  {isWinner: true, notes: 2, time: 50, points: 10}
-];
-
-export {getStats, rivalsMock, getTotal};
+export {getStats, getTotal};

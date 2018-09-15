@@ -36,9 +36,26 @@ export default class Router {
   }
 
   static showResultsScreen(model) {
-    const resultsView = new ResultsView(model);
-    resultsView.onReplayClick = Router.showGameScreen;
-    renderScreen(resultsView.element);
+    const playerScore = {
+      time: model._state.time,
+      notes: model._state.notes,
+      points: model._state.points,
+      fastPoints: model._state.fastPoints,
+      answers: model._state.answers
+    };
+    if (model._state.notes < 3 && model._state.time > 0) {
+      Loader.loadRivals()
+        .then((data) => {
+          const resultsView = new ResultsView(model, data);
+          resultsView.onReplayClick = Router.showGameScreen;
+          renderScreen(resultsView.element);
+        })
+        .then(() => Loader.saveResults(playerScore));
+    } else {
+      const resultsView = new ResultsView(model, []);
+      resultsView.onReplayClick = Router.showGameScreen;
+      renderScreen(resultsView.element);
+    }
   }
 
   static showErrorScreen(error) {
