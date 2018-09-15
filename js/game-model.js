@@ -3,7 +3,7 @@ const MAX_NOTES = 3;
 const FAST_ANSWER_TIME = 30;
 
 const initialGameState = Object.freeze({
-  level: 9,
+  level: 0,
   notes: 0,
   time: 300,
   points: 0,
@@ -15,8 +15,8 @@ const initialGameState = Object.freeze({
 
 export default class GameModel {
   constructor(questions) {
-    this.resetState()
-    this._state.levels = questions;
+    this.questions = questions;
+    this.resetState();
   }
 
   getCurrentLevel() {
@@ -28,7 +28,7 @@ export default class GameModel {
   }
 
   resetState() {
-    this._state = Object.assign({}, initialGameState);
+    this._state = Object.assign({}, initialGameState, {levels: this.questions});
   }
 
   hasNextLevel() {
