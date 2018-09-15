@@ -18,4 +18,4 @@ export const getFormatedTime = (initTime) => {
   }
 
   return time;
-}
+};
