@@ -33,7 +33,7 @@ const getTotal = (state) => {
 
   const playerTime = getFormatedTime(300 - state.time);
 
-  const winResult = `За ${playerTime.minutes} минуты и ${playerTime.seconds} секунд вы набрали ${state.points} баллов (${state.fastPoints} быстрых), совершив ${state.notes} ошибки`
+  const winResult = `За ${playerTime.minutes} минуты и ${playerTime.seconds} секунд вы набрали ${state.points} баллов (${state.fastPoints} быстрых), совершив ${state.notes} ошибки`;
 
   return winResult;
 };
