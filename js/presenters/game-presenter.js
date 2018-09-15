@@ -1,7 +1,6 @@
 import GenreView from "../views/genre-view";
 import ArtistView from "../views/artist-view";
 import HeaderView from "../views/header-view";
-import Router from "../router";
 
 const LevelTypes = {
   ARTIST: `artist`,
@@ -37,9 +36,8 @@ export default class GamePresenter {
     if (hasNextLevel) {
       this.changeContentView();
     } else {
-      Router.showResultsScreen(this.model);
       clearInterval(this._interval);
-      this.model.resetState();
+      this.showResults(this.model);
     }
   }
 
@@ -53,8 +51,8 @@ export default class GamePresenter {
   }
 
   startGame() {
+    this.model.resetState();
     this.changeLevel();
-
     this._interval = setInterval(() => {
       const hasNextLevel = this.model.hasNextLevel();
       if (hasNextLevel) {

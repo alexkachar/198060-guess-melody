@@ -6,8 +6,6 @@ export default class genreView extends AbstractView {
     this.level = level;
   }
 
-  // ${index === 0 ? `track__button--pause` : `track__button--play`}
-
   get template() {
     return `<section class="game__screen">
           <h2 class="game__title">${this.level.question}</h2>

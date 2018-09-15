@@ -3,7 +3,7 @@ const MAX_NOTES = 3;
 const FAST_ANSWER_TIME = 30;
 
 const initialGameState = Object.freeze({
-  level: 0,
+  level: 9,
   notes: 0,
   time: 300,
   points: 0,
@@ -40,7 +40,7 @@ export default class GameModel {
   }
 
   get state() {
-    return this._state;
+    return Object.assign({}, this._state);
   }
 
   answer(isCorrect) {

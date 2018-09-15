@@ -6,6 +6,8 @@ const FailedResults = {
 };
 
 const getStats = (rivals, playerStats) => {
+  console.log(playerStats, `state @ getStats`);
+
   const stats = [];
 
   rivals.forEach((it) => {
@@ -31,6 +33,7 @@ const getTotal = (state) => {
   }
 
   const playerTime = getFormatedTime(300 - state.time);
+  console.log(playerTime);
 
   const winResult = `За ${playerTime.minutes} минуты и ${playerTime.seconds} секунд вы набрали ${state.points} баллов (${state.fastPoints} быстрых), совершив ${state.notes} ошибки`
 

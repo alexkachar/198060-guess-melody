@@ -19,6 +19,7 @@ export default class Loader {
   }
 
   static loadRivals() {
+    console.log(`load rivals log`);
     return fetch(`${SERVER_URL}/stats/${APP_ID}`)
       .then(checkStatus)
       .then(toJSON);
