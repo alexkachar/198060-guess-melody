@@ -3,9 +3,14 @@ import ArtistView from "../views/artist-view";
 import HeaderView from "../views/header-view";
 import Router from "../router";
 
+const LevelTypes = {
+  ARTIST: `artist`,
+  GENRE: `genre`
+}
+
 const GameView = {
-  artist: ArtistView,
-  genre: GenreView
+  [LevelTypes.ARTIST]: ArtistView,
+  [LevelTypes.GENRE]: GenreView
 };
 
 export default class GamePresenter {
